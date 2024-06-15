@@ -1,4 +1,4 @@
-# 6月13日22M/S|Hiddify-Next免费节点每天更新订阅链接  更新时间 2024-06-13 14:08:57
+# 「6月15日」最高速度21.9M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接  更新时间 2024-06-15 10:23:48
 所有免费clash节点都爬取自网络，请勿用于非法用途 。节点地址：<a href="https://clashnodegithub.github.io" target="_blank">点击跳转</a>
 
 ## clash使用教程：
@@ -9,19 +9,19 @@
 
 ### Clash订阅链接
 
-- https://clashnodegithub.github.io/uploads/2024/06/0-20240613.yaml
-- https://clashnodegithub.github.io/uploads/2024/06/1-20240613.yaml
-- https://clashnodegithub.github.io/uploads/2024/06/2-20240613.yaml
-- https://clashnodegithub.github.io/uploads/2024/06/3-20240613.yaml
-- https://clashnodegithub.github.io/uploads/2024/06/4-20240613.yml
+- https://clashnodegithub.github.io/uploads/2024/06/0-20240615.yaml
+- https://clashnodegithub.github.io/uploads/2024/06/1-20240615.yaml
+- https://clashnodegithub.github.io/uploads/2024/06/2-20240615.yaml
+- https://clashnodegithub.github.io/uploads/2024/06/3-20240615.yaml
+- https://clashnodegithub.github.io/uploads/2024/06/4-20240615.yml
 
 ### V2ray订阅链接
 
-- https://clashnodegithub.github.io/uploads/2024/06/0-20240613.txt
-- https://clashnodegithub.github.io/uploads/2024/06/1-20240613.txt
-- https://clashnodegithub.github.io/uploads/2024/06/2-20240613.txt
-- https://clashnodegithub.github.io/uploads/2024/06/3-20240613.txt
-- https://clashnodegithub.github.io/uploads/2024/06/4-20240613.txt
+- https://clashnodegithub.github.io/uploads/2024/06/0-20240615.txt
+- https://clashnodegithub.github.io/uploads/2024/06/1-20240615.txt
+- https://clashnodegithub.github.io/uploads/2024/06/2-20240615.txt
+- https://clashnodegithub.github.io/uploads/2024/06/3-20240615.txt
+- https://clashnodegithub.github.io/uploads/2024/06/4-20240615.txt
 
 ## 更多clash节点订阅 ：
 
