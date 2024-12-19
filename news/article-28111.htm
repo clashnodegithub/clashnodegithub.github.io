@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-28111.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>vue在table表中悬浮显示数据及右键菜单_vue.js_</title>
+        <meta name="description" content="本文实例为大家分享了vue在table表中悬浮显示数据及右键菜单的具体代码，供大家参考，具体内容如下 悬浮显示 这个文档里是存在的，但很容易被忽略，先看看效果图  鼠标放在哪行，就会弹出相对应的描述。" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>vue在table表中悬浮显示数据及右键菜单_vue.js_</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>本文实例为大家分享了vue在table表中悬浮显示数据及右键菜单的具体代码，供大家参考，具体内容如下</p> <h2>悬浮显示</h2> <p>这个文档里是存在的，但很容易被忽略，先看看效果图</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/7a400b4dc651affdce965f42b77b65aa.jpg"></p> <p>鼠标放在哪行，就会弹出相对应的描述。</p> <p>直接看代码</p> <div class="ay1code"> <pre class="brush:js;">//列名及属性名  &lt;el-table-column prop="member"  label="构件名称"&gt;  //从json数据调取      &lt;template slot-scope="scope"&gt;      //悬浮显示数据      &lt;el-popover trigger="hover" placement="top" &gt;        &lt;p&gt;构建描述: {{ scope.row.memberTxt }}&lt;/p&gt;        &lt;p&gt;创建时间: {{ scope.row.date2 }}&lt;/p&gt;        &lt;div slot="reference" class="name-wrapper"&gt;        //行显示数据          &lt;el-tag size="medium" &gt;       {{ scope.row.member }}       //数据后加删除按钮       &lt;el-button icon="el-icon-delete" type="text" class="red" @click="handleDelete(scope.$index,scope.row)"&gt;       &lt;/el-button&gt;       &lt;/el-tag&gt;          &lt;/div&gt;      &lt;/el-popover&gt;      &lt;/template&gt;  &lt;/el-table-column&gt;</pre> </div> <p>只是这些就足够了，表的设置无需做更改，用到右键菜单时才会更改；</p> <h2><strong>右键菜单</strong></h2> <p>这与上个可以没有关系，也可是同一个，取决于自己！<br />依旧是先看图</p> <p><img decoding="async" alt="" src="http://img.555519.xyz/uploads3/20220415/7a400b4dc651affdce965f42b77b65aa.jpg"></p> <p>右下角的菜单就是右键的菜单了；<br />我们来看具体实现：<br /><strong>首先就是表格的设置</strong><br />文档中表格有这个事件，</p> <div class="ay1code"> <pre class="brush:js;">&lt;el-table :data="tableData"     type="expand"     class="table"      ref="multipleTable"      header-cell-class-name="table-header"     @row-contextmenu="rowContextmenu"//主要就是这个事件     @selection-change="handleSelectionChange"&gt;</pre> </div> <p>当然，在表格下面，还要写重要的一步</p> <div class="ay1code"> <pre class="brush:js;">&lt;context-button v-if="menuVisible" @foo="foo" ref="contextbutton"       @handleOne="handleOne" @handleTwo="handleTwo" @handleThree="handleThree"       @handleFour="handleFour" @handleFive="handleFive"&gt;&lt;/context-button&gt;</pre> </div> <p>这些@handle对应点击事件</p> <p><strong>接下来就是methods</strong></p> <div class="ay1code"> <pre class="brush:js;">rowContextmenu (row, column, event) {              this.menuVisible = false              this.menuVisible = true              // 阻止右键默认行为              event.preventDefault()              this.$nextTick(() =&gt; {                this.$refs.contextbutton.init(row,column,event)          this.updForm = row;              })                    },            foo() { // 取消鼠标监听事件 菜单栏              this.menuVisible = false             /* document.removeEventListener('click', this.foo) */            },             handleTwo () {                    },          handleThree () {                    },    handleFour (){               },    handleFive (row){        }</pre> </div> <p>那些handle开头的方法是右键菜单的方法，我自己写的就不公布了，知道是点击按钮事件就可以了<br /><strong>重点，上面我们在表格下面写了神秘代码就要用到了<br />在你使用的vue界面的目录下创建一个“contextButton”文件夹，对应 上面的ref即可，注意大小写！<br />在文件夹下创建vue页面</strong><br />首先是html，也就是右键菜单显示的内容了</p> <div class="ay1code"> <pre class="brush:xhtml;">&lt;template&gt;    &lt;div id="contextmenu" class="contextmenu"&gt;      &lt;div class="contextmenu__item" @click="handleTwo()"&gt;设计信息&lt;/div&gt;      &lt;div class="contextmenu__item" @click="handleThree()"&gt;查看图纸&lt;/div&gt;    &lt;div class="contextmenu__item" @click="handleFour()"&gt;查看模型&lt;/div&gt;     &lt;div class="contextmenu__item" @click="handleFive()"&gt;修改信息&lt;/div&gt;    &lt;/div&gt;  &lt;/template&gt;</pre> </div> <p>然后就是script</p> <div class="ay1code"> <pre class="brush:js;">export default {        name: "index",        data () {          return {              collapse: false,                                                                                                                                                                                                                      }        },  methods: {          init (row, column,event) {           let menu = document.querySelector('#contextmenu')            let cha = document.body.clientHeight - event.clientY            console.log(document.body.clientHeight,event.clientY,cha)            if (cha &lt; 150) {              menu.style.top = event.clientY -0 + 'px'            } else {              menu.style.top = event.clientY -60 + 'px'            }            menu.style.left = event.clientX - 200 + 'px'               document.addEventListener('click', this.foo)                },          foo () {            this.$emit('foo')          },           handleTwo () {            this.$emit('handleTwo')          },          handleThree () {            this.$emit('handleThree')          },    handleFour (){     this.$emit('handleFour')          },    handleFive (row){     this.$emit('handleFive')    }    }      }</pre> </div> <p><strong>位置的话是随着你右键的不同位置二不同的</strong><br />如果不喜欢这个位置，可以自己改变<br /><strong>最后就是样式了</strong></p> <div class="ay1code"> <pre class="brush:css;"> .contextmenu__item {      display: block;      line-height: 34px;      text-align: center;    }     .contextmenu__item:not(:last-child) {      border-bottom: 1px solid rgba(64,158,255,.2);    }    .contextmenu {      position: absolute;      background-color: #ecf5ff;      width: 100px;  font-size: 12px;      color: #409EFF;      border-radius: 4px;      -webkit-box-sizing: border-box;      box-sizing: border-box;      border: 1px solid rgba(64,158,255,.2);      white-space: nowrap;      z-index: 1000;    }    .contextmenu__item:hover {      cursor: pointer;      background: #66b1ff;      border-color: #66b1ff;      color: #fff;    }</pre> </div> <p>颜色什么的都是我喜欢的，不喜欢的话可以自己改变。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-27653.htm">天津宠物领养机构名单整理（天津宠物猫领养中心）</a></p>
+                                        <p>下一个：<a href="/news/article-28112.htm">麦富迪猫粮怎么样（麦富迪猫粮怎么样?）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-7-15-free-node-subscribe-links.htm" title="「7月15日」最高速度22.2M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「7月15日」最高速度22.2M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19034.htm" title="和田市宠物店电话地址（和田卖宠物的地方）">和田市宠物店电话地址（和田卖宠物的地方）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-17-node-share-links.htm" title="「7月17日」最高速度21.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「7月17日」最高速度21.9M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-11-linux-clash-github.htm" title="「12月11日」最高速度18.5M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「12月11日」最高速度18.5M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22100.htm" title="圣诞节送什么花好?(圣诞节送什么花好看)">圣诞节送什么花好?(圣诞节送什么花好看)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-15-free-node-subscribe.htm" title="「10月15日」最高速度18M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「10月15日」最高速度18M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-8-node-share-links.htm" title="「8月8日」最高速度19.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「8月8日」最高速度19.1M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-6-23-shadowrocket-node.htm" title="「6月23日」最高速度20M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「6月23日」最高速度20M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-19-clash-node-github.htm" title="「10月19日」最高速度18.3M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「10月19日」最高速度18.3M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19348.htm" title="塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）">塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">56</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
