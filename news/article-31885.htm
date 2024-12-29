@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-31885.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>用JS实现一个秒表计时器</title>
+        <meta name="description" content="秒表计时器的实现： 效果图如下： 附代码，已调试运行 &lt;!DOCTYPE html&gt; &lt;html lang="en"&gt;  &lt;head&gt;     &lt;meta c" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>用JS实现一个秒表计时器</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p>秒表计时器的实现：<br /> 效果图如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads/20221229/fca2dba29e74762697eef52359cd81dc.jpg" alt="用JS实现一个秒表计时器"></p> <p>附代码，已调试运行</p> <pre><code>&lt;!DOCTYPE html&gt; &lt;html lang="en"&gt;  &lt;head&gt;     &lt;meta charset="UTF-8"&gt;     &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;     &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;     &lt;title&gt;Document&lt;/title&gt;     &lt;style&gt;         #div1 {             width: 300px;             height: 400px;             background: skyblue;             margin: 100px auto;             text-align: center;         }                  #count {             width: 200px;             height: 150px;             line-height: 150px;             margin: auto;             font-size: 40px;         }                  #div1 input {             width: 150px;             height: 40px;             background: orange;             font-size: 25px;             margin-top: 20px         }     &lt;/style&gt; &lt;/head&gt;  &lt;body&gt;     &lt;div id="div1"&gt;         &lt;div id="count"&gt;             &lt;span id="id_H"&gt;00&lt;/span&gt;             &lt;span id="id_M"&gt;00&lt;/span&gt;             &lt;span id="id_S"&gt;00&lt;/span&gt;         &lt;/div&gt;         &lt;input id="start" type="button" value="开始"&gt;         &lt;input id="pause" type="button" value="暂停"&gt;         &lt;input id="stop" type="button" value="停止"&gt;     &lt;/div&gt;     &lt;script&gt;         //可以将查找标签节点的操作进行简化  var btn = getElementById('btn')         function $(id) {             return document.getElementById(id)         }         window.onload = function() {             //点击开始建 开始计数             var count = 0             var timer = null //timer变量记录定时器setInterval的返回值             $("start").onclick = function() {                 timer = setInterval(function() {                     count++;                     console.log(count)                         // 需要改变页面上时分秒的值                     console.log($("id_S"))                     $("id_S").innerHTML = showNum(count % 60)                     $("id_M").innerHTML = showNum(parseInt(count / 60) % 60)                     $("id_H").innerHTML = showNum(parseInt(count / 60 / 60))                 }, 1000)             }             $("pause").onclick = function() {                     //取消定时器                     clearInterval(timer)                 }                 //停止记数  数据清零  页面展示数据清零             $("stop").onclick = function() {                 //取消定时器                 $("pause").onclick()                     // clearInterval(timer)                     //数据清零  总秒数清零                 count = 0                     //页面展示数据清零                 $("id_S").innerHTML = "00"                 $("id_M").innerHTML = "00"                 $("id_H").innerHTML = "00"             }              //封装一个处理单位数字的函数             function showNum(num) {                 if (num &lt; 10) {                     return '0' + num                 }                 return num             }         }     &lt;/script&gt; &lt;/body&gt;  &lt;/html&gt; </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-31883.htm">如何使用TIME_FORMAT()函数在MySQL中卸载时间/日期值？</a></p>
+                                        <p>下一个：<a href="/news/article-32367.htm">1970年农历4月27日天干地支（1970年农历4月27日阳历是多少）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-1-clash-node.htm" title="「10月1日」最高速度22.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「10月1日」最高速度22.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-32368.htm" title="怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）">怎么做宠物粮代理（宠物粮代加工工厂哪哪里好点）</a></li>
+                        <li class="py-2"><a href="/news/article-27194.htm" title="想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）">想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-7-27-clash-windows.htm" title="「7月27日」最高速度22.2M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「7月27日」最高速度22.2M/S，2024年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22554.htm" title="宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）">宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-11-shadowrocket-node.htm" title="「9月11日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「9月11日」最高速度20.9M/S，2024年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-9-13-clash-node-github.htm" title="「9月13日」最高速度21.5M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接">「9月13日」最高速度21.5M/S，2024年SSR/Clash/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24862.htm" title="猫驱虫一般多少钱一次（猫驱虫费用）">猫驱虫一般多少钱一次（猫驱虫费用）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-8-3-free-ssr-node.htm" title="「8月3日」最高速度20.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「8月3日」最高速度20.4M/S，2024年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-26730.htm" title="动物疫苗贵吗多少钱一次（动物疫苗多少钱一支）">动物疫苗贵吗多少钱一次（动物疫苗多少钱一支）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
