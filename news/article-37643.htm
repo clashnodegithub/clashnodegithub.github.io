@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-37643.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>JavaScript 对象的四种方式比较详解_javascript技巧</title>
+        <meta name="description" content="目录  前言 1. 引用比较 2. 手动比较 3. 浅层比较 4. 深层比较 5. 总结    前言 比较 JavaScript 中的值非常简单，只需用相等运算符即可，例如严格相等运算符：  'a' " />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>JavaScript 对象的四种方式比较详解_javascript技巧</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="navCategory"> <h5 class="catalogue">目录</h5> <ul class="first_class_ul"> <li><a href="#_label0" rel="nofollow">前言</a></li> <li><a href="#_label1" rel="nofollow">1. 引用比较</a></li> <li><a href="#_label2" rel="nofollow">2. 手动比较</a></li> <li><a href="#_label3" rel="nofollow">3. 浅层比较</a></li> <li><a href="#_label4" rel="nofollow">4. 深层比较</a></li> <li><a href="#_label5" rel="nofollow">5. 总结</a></li> </ul> </div> <p class="maodian"><a name="_label0" rel="nofollow"></a></p> <h2>前言</h2> <p>比较 JavaScript 中的值非常简单，只需用相等运算符即可，例如严格相等运算符：</p> <div class="ay1code"> <pre class="brush:plain;">'a' === 'c'; // =&gt; false  1   === 1;   // =&gt; true</pre> </div> <p>但是对象却有结构化的数据，所以比较起来比较困难。在本文中，你将学习如何正确比较 JavaScript 中的对象。</p> <p class="maodian"><a name="_label1" rel="nofollow"></a></p> <h2>1. 引用比较</h2> <p>JavaScript 提供了 3 种方法来对值进行比较：</p> <ul> <li>严格相等运算符 <code>===</code> </li> <li>宽松相等运算符 <code>==</code> </li> <li> <code>Object.is()</code> 函数</li> </ul> <p>当使用上述任何一种方法比较对象时，只有在比较的值引用了相同的对象实例时，比较的结果为 <code>true</code>。这就是参照相等性。</p> <p>让我们定义对象 <code>hero1</code> 和 <code>hero2</code> ，并查看实际中的参照相等性：</p> <div class="ay1code"> <pre class="brush:js;"> const hero1 = {     name: 'Batman'   };   const hero2 = {     name: 'Batman'   };      hero1 === hero1; // =&gt; true   hero1 === hero2; // =&gt; false     hero1 == hero1; // =&gt; true   hero1 == hero2; // =&gt; false      Object.is(hero1, hero1); // =&gt; true   Object.is(hero1, hero2); // =&gt; false</pre> </div> <p><code>hero1 === hero1</code> 的计算结果为 <code>true</code>，因为两个操作数均指向了同一个对象实例 <code>hero1</code>。</p> <p>另一方面，<code>hero1 === hero2</code> 的计算结果为 <code>false</code>，因为 <code>hero1</code> 和 <code>hero2</code> 是不同的对象实例。</p> <p>有意思的是，<code>hero1</code> 和 <code>hero2</code> 对象的内容是相同的：两个对象都有一个 <code>name</code> 属性，它的其值是 <code>'Batman'</code>。尽管如此，即使比较相同结构的对象，<code>hero1 === hero2</code>  的结果也是 <code>false</code>。</p> <p>当你想比较对象引用而不是它们的内容时，引用相等是很有用的。但是在更多的情况之下，你都想针对对象的实际内容进行比较：例如属性及它们的值。</p> <p>接下来看看如何通过对象的内容比较对象是否相等。</p> <p class="maodian"><a name="_label2" rel="nofollow"></a></p> <h2>2. 手动比较</h2> <p>按内容比较对象最直接的方法是读取属性并手动比较它们。</p> <p>例如，让我们编写一个特殊的函数 <code>isHeroEqual()</code> 来比较两个 hero 对象：</p> <div class="ay1code"> <pre class="brush:js;"> function isHeroEqual(object1, object2) {     return object1.name === object2.name;   }      const hero1 = {     name: 'Batman'   };   const hero2 = {     name: 'Batman'  };   const hero3 = {     name: 'Joker'   };     isHeroEqual(hero1, hero2); // =&gt; true   isHeroEqual(hero1, hero3); // =&gt; false</pre> </div> <p><code>isHeroEqual()</code> 访问两个对象的属性 <code>name</code> 并比较它们的值。</p> <p>如果被比较的对象具有一些属性，我更喜欢编写诸如 <code>isHeroEqual()</code> 之类的比较函数。这类函数具有良好的性能：在比较中只会涉及少数几个属性访问器和相等运算符。</p> <p>手动比较需要手动提取属性，对于简单对象来说，这不是问题。但是，要对较大的对象（或结构未知的对象）进行比较，就不方便了，因为它需要大量的样板代码。</p> <p>那么让我们来看看对象的浅层比较能提供哪些帮助。</p> <p class="maodian"><a name="_label3" rel="nofollow"></a></p> <h2>3. 浅层比较</h2> <p>如果用浅层比较检查对象，你必须获取两个对象的属性列表（使用 <code>Object.keys()</code>），然后检查它们的属性值是否相等。</p> <p>下面的代码是浅层比较的一种实现方式：</p> <div class="ay1code"> <pre class="brush:js;"> function shallowEqual(object1, object2) {     const keys1 = Object.keys(object1);     const keys2 = Object.keys(object2);        if (keys1.length !== keys2.length) {       return false;     }        for (let index = 0; index &lt; keys1.length; index++) {       const val1 = object1[keys1[index]];       const val2 = object2[keys2[index]];       if (val1 !== val2) {         return false;       }     }        return true;   }</pre> </div> <p>在函数内部，<code>keys1</code> 和 <code>keys2</code> 是分别包含 <code>object1</code> 和 <code>object2</code> 属性名称的数组。</p> <p>用 <code>for</code> 循环遍历键，并比较 <code>object1</code> 和 <code>object2</code> 的每个属性。</p> <p>使用浅层比较，你可以轻松对有着许多属性的对象进行相等性检查：</p> <div class="ay1code"> <pre class="brush:js;"> const hero1 = {     name: 'Batman',     realName: 'Bruce Wayne'   };   const hero2 = {     name: 'Batman',     realName: 'Bruce Wayne'   };   const hero3 = {     name: 'Joker'   };      shallowEqual(hero1, hero2); // =&gt; true   shallowEqual(hero1, hero3); // =&gt; false</pre> </div> <p><code>shallowEqual(hero1, hero2)</code> 返回 <code>true</code>，因为对象 <code>hero1</code> 和 <code>hero2</code> 具有相同的属性（<code>name</code> 和 <code>realName</code>），并且值也相同。</p> <p>另一方面，由于 <code>hero1</code> 和 <code>hero3</code> 具有不同的属性，所以 <code>shallowEqual(hero1, hero3)</code>  将会返回 <code>false</code>。</p> <p>但是 JavaScript 中的对象是可以嵌套的。在这种情况下，浅层比较并不能很好地发挥作用。</p> <p>下面对具有嵌套对象的对象执行浅层比较检查：</p> <div class="ay1code"> <pre class="brush:js;"> const hero1 = {     name: 'Batman',     address: {       city: 'Gotham'     }   };   const hero2 = {     name: 'Batman',     address: {       city: 'Gotham'     }   };     shallowEqual(hero1, hero2); // =&gt; false</pre> </div> <p>这次，即使两个对象 <code>hero1</code> 和 <code>hero2</code> 具有相同的内容，<code>shallowEqual(hero1, hero2)</code>  也将会返回 <code>false</code>。</p> <p>发生这种情况是因为嵌套对象 <code>hero1.address</code> 和 <code>hero2.address</code> 是不同的对象实例。因此，浅层比较认为  <code>hero1.address</code> 和 <code>hero2.address</code> 是两个不同的值。</p> <p>解决嵌套对象的问题需要进行深层比较。</p> <p class="maodian"><a name="_label4" rel="nofollow"></a></p> <h2>4. 深层比较</h2> <p>深层比较与浅层比较相似，不同之处在于，当属性中包含对象时，将对嵌套对象执行递归浅层比较。</p> <p>看一下深层比较的实现：</p> <div class="ay1code"> <pre class="brush:js;"> function deepEqual(object1, object2) {     const keys1 = Object.keys(object1);     const keys2 = Object.keys(object2);        if (keys1.length !== keys2.length) {       return false;     }        for (let index = 0; index &lt; keys1.length; index++) {       const val1 = object1[keys1[index]];       const val2 = object2[keys2[index]];       const areObjects = isObject(val1) &amp;&amp; isObject(val2);       if (areObjects &amp;&amp; !deepEqual(val1, val2) ||            !areObjects &amp;&amp; val1 !== val2) {         return false;       }     }        return true;   }      function isObject(object) {     return object != null &amp;&amp; typeof object === 'object';   }</pre> </div> <p>第 13 行的 <code>areObjects &amp;&amp; !deepEqual(val1, val2)</code>  一旦检查到的属性是对象，则递归调用将会开始验证嵌套对象是否也相等。</p> <p>现在用 <code>deepEquality()</code> 比较具有嵌套对象的对象：</p> <div class="ay1code"> <pre class="brush:js;"> const hero1 = {     name: 'Batman',     address: {       city: 'Gotham'     }   };   const hero2 = {     name: 'Batman',     address: {       city: 'Gotham'     }   };     deepEqual(hero1, hero2); // =&gt; true</pre> </div> <p>深度比较函数能够正确地确定 <code>hero1</code> 和 <code>hero2</code> 是否具有相同的属性和值，包括嵌套对象  <code>hero1.address</code>  和 <code>hero2.address</code> 的相等性。</p> <p>为了深入比较对象，我建议使用Node内置<code>util</code>模块的  <code>isDeepStrictEqual(object1, object2)</code></p> <p class="maodian"><a name="_label5" rel="nofollow"></a></p> <h2>5. 总结</h2> <p>引用相等性（使用  <code>===</code>、 <code>==</code> 或 <code>Object.is()</code>）用来确定操作数是否为同一个对象实例。</p> <p>手动检查对象是否相等，需要对属性值进行手动比较。尽管这类检查需要手动编码来对属性进行比较，但由于很简单，所以这种方法很方便。</p> <p>当被比较的对象有很多属性或在运行时确定对象的结构时，更好的方法是使用浅层检查。</p> <p>如果比较的对象具有嵌套对象，则应该进行深度比较检查。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-37163.htm">鱼竿十大品牌排行榜前十名有哪些牌子(鱼竿十大品牌排行榜前十名有哪些图片)</a></p>
+                                        <p>下一个：<a href="/news/article-37644.htm">超级详细的webpack Plugin讲解_javascript技巧_</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-22552.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-20-shadowrocket-node.htm" title="「11月20日」最高速度19.1M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「11月20日」最高速度19.1M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29788.htm" title="被猫抓了一下出了点血可以不***吗（被猫抓了一下出了点血可以不***吗多少钱）">被猫抓了一下出了点血可以不***吗（被猫抓了一下出了点血可以不***吗多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-21-free-ssr-node.htm" title="「10月21日」最高速度20.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「10月21日」最高速度20.2M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28584.htm" title="男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)">男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)</a></li>
+                        <li class="py-2"><a href="/news/article-34753.htm" title="打了疫苗的动物用不用打狂犬疫苗了呢（动物打过疫苗被咬还有事啊）">打了疫苗的动物用不用打狂犬疫苗了呢（动物打过疫苗被咬还有事啊）</a></li>
+                        <li class="py-2"><a href="/news/article-33797.htm" title="动物疫苗空瓶回收处理制度及流程图片（动物疫苗空瓶回收处理制度及流程图片）">动物疫苗空瓶回收处理制度及流程图片（动物疫苗空瓶回收处理制度及流程图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-28-free-high-speed-nodes.htm" title="「11月28日」最高速度20.9M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「11月28日」最高速度20.9M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28111.htm" title="vue在table表中悬浮显示数据及右键菜单_vue.js_">vue在table表中悬浮显示数据及右键菜单_vue.js_</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-29-free-node-subscribe.htm" title="「10月29日」最高速度18M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「10月29日」最高速度18M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
