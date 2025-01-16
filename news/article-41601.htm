@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-41601.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>MySQL备份迁移之mydumper</title>
+        <meta name="description" content="mydumper 是一款开源的 MySQL 逻辑备份工具，主要由 C 语言编写。与 MySQL 自带的 mysqldump 类似，但是 mydumper 更快更高效。 mydumper 的一些优点特性" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>MySQL备份迁移之mydumper</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				</h1> <p>mydumper 是一款开源的 MySQL 逻辑备份工具，主要由 C 语言编写。与 MySQL 自带的 mysqldump 类似，但是 mydumper 更快更高效。<br /> mydumper 的一些优点特性：<br /> s</p> <ul> <li>轻量级C语言开发</li> <li>支持多线程备份数据，备份后按表生成多个备份文件</li> <li>支持事务性和非事务性表一致性备份</li> <li>支持将导出的文件压缩，节约空间</li> <li>支持多线程恢复</li> <li>支持已守护进程模式工作，定时快照和连续二进制日志</li> <li>支持按指定大小将备份文件切割</li> <li>数据与建表语句分离</li> </ul> </h1> <p>安装方式非常多，以下介绍几种常见的方式。</p> <ul> <li>Ubuntu 中自带了 myloader</li> </ul> <blockquote> <p>sudo apt-get install mydumper</p> </blockquote> <ul> <li>使用 deb 包安装，以 Ubuntu 为例</li> </ul> <blockquote> <p>apt-get install libatomic1<br /> wget<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/mydumper/mydumper/releases/download/v0.11.5/mydumper_0.11.5-1.%24"  target="_blank" rel="nofollow">https://github.com/mydumper/mydumper/releases/download/v0.11.5/mydumper_0.11.5-1.$</a>(lsb_release -cs)_amd64.deb 		dpkg -i mydumper_0.11.5-1.$(lsb_release -cs)_amd64.deb</p> </blockquote> <ul> <li>编译安装</li> <li>docker 安装</li> </ul> <p>根据实际平台情况，可选择不同的安装方式，官方也提供了一些常见的安装文档，<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/mydumper/mydumper"  target="_blank" rel="nofollow">https://github.com/mydumper/mydumper</a></p> </h1> <h2 id="mydumper-参数说明">mydumper 参数说明</h2> <pre><code>-B, --database              要备份的数据库，不指定则备份所有库，一般建议备份的时候一个库一条命令 -T, --tables-list           需要备份的表，名字用逗号隔开 -o, --outputdir             备份文件输出的目录 -s, --statement-size        生成的insert语句的字节数，默认1000000 -r, --rows                  将表按行分块时，指定的块行数，指定这个选项会关闭 --chunk-filesize -F, --chunk-filesize        将表按大小分块时，指定的块大小，单位是 MB -c, --compress              压缩输出文件 -e, --build-empty-files     如果表数据是空，还是产生一个空文件（默认无数据则只有表结构文件） -x, --regex                 是同正则表达式匹配 'db.table' -i, --ignore-engines        忽略的存储引擎，用都厚分割 -m, --no-schemas            不备份表结构 -d, --no-data               不备份表数据 -G, --triggers              备份触发器 -E, --events                备份事件 -R, --routines              备份存储过程和函数 -W, --no-views              不备份视图 --where                     只导出符合条件的数据 -k, --no-locks              不使用临时共享只读锁，使用这个选项会造成数据不一致 --less-locking              减少对InnoDB表的锁施加时间（这种模式的机制下文详解） -l, --long-query-guard      设定阻塞备份的长查询超时时间，单位是秒，默认是60秒（超时后默认mydumper将会退出） --kill-long-queries         杀掉长查询 (不退出) -b, --binlogs               导出binlog -D, --daemon                启用守护进程模式，守护进程模式以某个间隔不间断对数据库进行备份 -I, --snapshot-interval     dump快照间隔时间，默认60s，需要在daemon模式下 -L, --logfile               使用的日志文件名(mydumper所产生的日志), 默认使用标准输出 --tz-utc                    跨时区时使用的选项。允许备份timestamp,这样会导致不同时区的备份还原出问题，默认关闭。 --skip-tz-utc               同上，默认值。 --use-savepoints            使用savepoints来减少采集metadata所造成的锁时间，需要 SUPER 权限 --success-on-1146           Not increment error count and Warning instead of Critical in case of table doesn't exist -h, --host                  连接的主机名 -u, --user                  备份所使用的用户 -p, --password              密码 -P, --port                  端口 -S, --socket                使用socket通信时的socket文件 -t, --threads               开启的备份线程数，默认是4 -C, --compress-protocol     压缩与mysql通信的数据 -V, --version               显示版本号 -v, --verbose               输出信息模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为 2</code></pre> <h2 id="myloader-参数说明">myloader 参数说明</h2> <pre><code>-d, --directory                   备份文件的文件夹 -q, --queries-per-transaction     每次事务执行的查询数量，默认是1000 -o, --overwrite-tables            如果要恢复的表存在，则先drop掉该表，使用该参数，需要备份时候要备份表结构 -B, --database                    还原到的数据库（目标库） -s, --source-db                   被还原的数据库（源数据库），-s db1 -B db2，表示源库中的db1数据库，导入到db2数据库中。 -e, --enable-binlog               启用还原数据的二进制日志 -h, --host                        主机 -u, --user                        还原的用户 -p, --password                    密码 -P, --port                        端口 -S, --socket                      socket文件 -t, --threads                     还原所使用的线程数，默认是4 -C, --compress-protocol           压缩协议 -V, --version                     显示版本 -v, --verbose                     输出模式, 0 = silent, 1 = errors, 2 = warnings, 3 = info, 默认为2</code></pre> </h1> <h2 id="mydumper-导出示例">mydumper 导出示例</h2> <pre><code class="language-shell"># 个人实际中最常用的备份语句 mydumper -B test -o /home/mydumper/data/test -e -G -R -E -D -u root -p 123456 -h 192.168.0.191 -P 3306 -v 3 --long-query-guard 288000 --skip-tz-utc --no-locks --logfile /home/mydumper/log/test  # 备份全部数据库  mydumper -u root -p 123456 -o /home/mydumper/data/all/  # 备份全部数据库，排除系统库， mydumper -u root -p 123456 --regex '^(?!(mysql|sys|performance_schema|information_schema))' -o /home/mydumper/data/all/  # 备份全部数据库，包含触发器、事件、存储过程及函数 mydumper -u root -p 123456 -G -R -E -o /home/mydumper/data/all/  # 备份指定库 mydumper -u root -p 123456 -G -R -E -B db1 -o /home/mydumper/data/db1  # 备份指定表 mydumper -u root -p 123456 -B db1 -T tb1,tb2 -o /home/mydumper/data/db1  # 只备份表结构 mydumper -u root -p 123456 -B db1 -d -o /home/mydumper/data/db1  # 只备份表数据 mydumper -u root -p 123456 -B db1 -m -o /home/mydumper/data/db1</code></pre> <h2 id="myloader-导入案例">myloader 导入案例</h2> <pre><code class="language-shell"># 个人实际中最常用的导入语句 myloader -h 192.168.0.192 -P 33306 -u root -p 123456 -t 1 -v 3 -d /home/mydumper/data/test/0/ -B test  # 从备份中恢复指定库 myloader -u root -p 123456 -s db1 -o -d /home/mydumper/data/all/0/  # 导入时开启 binlog myloader -u root -p 123456 -e -o -d /home/mydumper/data/db1/0/  # 将源库的 db1 导入到备库的 db1_bak 库中 myloader -u root -p 123456 -B db1_bak -s db1 -o -d /home/mydumper/data/db1/0/  # 导入特定的某几张表 ## 先将 metadata 文件和需要单独导入的表的结构文件和数据文件导入到单独的文件夹中。此处默认库已建好，否则还需要复制建库相关语句。 cp /home/mydumper/data/db1/0/metadata /backup/db1/0/ cp /home/mydumper/data/db1/0/d1.t1-schema.sql /backup/db1/0/ cp /home/mydumper/data/db1/0/d1.t1.sql /backup/db1/0/ ## 从新文件夹中导入数据 myloader -u root -p 123456 -B db1 -d /backup/db1/0/ ## 以上就可以单独导入 db1.t1 表</code></pre> <blockquote> <p>关于 -e 参数，需要稍微注意下。默认情况下，myloader 是不开启 binlog 的，这样可以提高导入速度。如果导入实例有从库，且需要导入的结果同步到从库上，则需要使用 -e 打开 binlog 记录。</p> </blockquote> <p>导出之后的目录如下，以数据库 d1 ，其中有表  t1 为例：</p> <pre><code>-d1  -0    metadata             记录备份时间点的Binlog信息，日志文件名和写入位置    d1-schema-create.sql 建库语句    d1-schema-post.sql   存储过程，函数，事件创建语句    d1.t1-schema.sql     表结构文件    d1.t1.sql            表数据文件，若使用了分块参数，大表的数据文件会出现多个，以数字分开。  -1</code></pre> <blockquote> <p>以上为比较常见的导出后的目录结构，根据实际情况不同，可能还有会含有触发器的文件，含有视图的文件等。</p> </blockquote> </h1> <ul> <li> <p>Error switching to database whilst restoring table</p> <p>使用 myloader 导入时会出现这类报错，可以尝试的解决方法如下：调大 wait_timeout 参数；调大 max_packet_size 参数；使用一个线程导入，  -t 1。</p> </li> <li> <p>(myloader:35671): CRITICAL **: Error restoring test.email_logger from file test.email_logger.sql: Cannot create a JSON value from a string with CHARACTER SET 'binary'.</p> <p>MySQL 的一个 Bug，可以尝试手动修改对应的备份文件，将</p> <blockquote> <p>/<em>!40101 SET NAMES binary</em>/;</p> </blockquote> <p>修改为：</p> <blockquote> <p>/<em>!40101 SET NAMES utf8mb4</em>/;</p> </blockquote> </li> <li> <p>(myloader:34726): CRITICAL **: Error restoring test.(null) from file test-schema-post.sql: Access denied; you need (at least one of) the SUPER privilege(s) for this operation</p> <p>在导入 AWS RDS 时部分存储过程创建失败，有比较严格的权限限制，需要导入用户有 SUPER 权限，但是 AWS RDS 用户无法授予 SUPER 权限。针对这部分存储过程，可以考虑手动在备份库上创建。</p> </li> <li> <p>大表导出优化</p> <p>使用<code>-r</code>或<code>-F</code>参数，对导出的数据文件进行分片。</p> </li> <li> <p>备份机器配置尽可能高</p> <p>备份前先预估大小，避免机器磁盘不足。尽可能选用配置较高的机器，加快备份速度。</p> </li> <li> <p>非必要数据不备份</p> <p>备份前对于不用备份的数据可以提前进行一次删除，也可在导出数据时添加正则参数等过滤部分表</p> </li> <li> <p>备份尽量不跨网络</p> <p>备份数据时尽量在内网中进行，若需要将数据迁移到外网，可以备份完之后，将备份文件拷贝到外网服务器上，尽量减少导出时网络不稳定的干扰。导入时同理。</p> </li> <li> <p>加快导入速度的一些方法</p> <p>选择合适的线程数，根据实际情况和机器配置，选择合适的线程参数，并非线程数越多越快。<br /> 导入时关闭 MySQL 的 binlog 写入，待导入完成后再开启。<br /> 在内网或较稳定的环境中进行导入。</p> </li> </ul> </h1> <h2 id="mydumper-工作流程">mydumper 工作流程</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0a277804bb3e9ade3a05c3d09a636bd2.jpg" alt="MySQL备份迁移之mydumper"><br /> 主要步骤概括</p> <ul> <li>主线程 FLUSH TABLES WITH READ LOCK，施加全局只读锁，阻止DML语句写入，保证数据的一致性。</li> <li>读取当前时间点的二进制日志文件名和日志写入的位置并记录在metadata文件中。</li> <li>N个dump线程 START TRANSACTION WITH CONSISTENT SNAPSHOT，开启读一致的事务。</li> <li>dump non-InnoDB tables， 首先导出非事务引擎的表。</li> <li>主线程 UNLOCK TABLES 非事务引擎备份完后，释放全局只读锁。</li> <li>dump InnoDB tables，基于事务导出InnoDB表。</li> <li>事务结束。</li> </ul> <h2 id="myloader-工作原理">myloader 工作原理</h2> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1a24a350e0b2a966842e7949d1149013.jpg" alt="MySQL备份迁移之mydumper"></p> <p></p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-41598.htm">MySQL SELECT子句中如何使用Groups函数？</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-10-9-free-ssr-node.htm" title="「10月9日」最高速度18.4M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「10月9日」最高速度18.4M/S，2024年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-21182.htm" title="java class 文件格式解析">java class 文件格式解析</a></li>
+                        <li class="py-2"><a href="/news/article-41097.htm" title="养猫接种疫苗多少钱（养猫的疫苗要多少钱）">养猫接种疫苗多少钱（养猫的疫苗要多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-10-8-free-subscribe-node.htm" title="「10月8日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「10月8日」最高速度21M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22554.htm" title="宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）">宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe.htm" title="「1月16日」最高速度18M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「1月16日」最高速度18M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-13-free-shadowrocket-node.htm" title="「11月13日」最高速度21.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「11月13日」最高速度21.1M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22101.htm" title="豆皮炒秋葵的做法大全(豆皮炒秋葵的做法窍门)">豆皮炒秋葵的做法大全(豆皮炒秋葵的做法窍门)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-10-free-subscribe-node.htm" title="「12月10日」最高速度20.4M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接">「12月10日」最高速度20.4M/S，2024年V2ray/SSR/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-clash.htm" title="「1月9日」最高速度21.6M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「1月9日」最高速度21.6M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
