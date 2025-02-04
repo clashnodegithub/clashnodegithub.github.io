@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-50066.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Windows配置kubectl,执行yaml配置文件</title>
+        <meta name="description" content="首先需要rancher里面的配置文件 将点击进去之后的config复制到一个文本文档： 复制到新建的文本文档之后，将文件名改成 config，文件没有后缀名，将改文件放到C:\Users\Admini" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-50066.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="Windows配置kubectl,执行yaml配置文件" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/8112c05f244ce3c6de3775b91c5eebf3.webp" />
+        <meta property="og:release_date" content="2025-02-02T09:28:02" />
+    <meta property="og:updated_time" content="2025-02-02T09:28:02" />
+        <meta property="og:description" content="首先需要rancher里面的配置文件 将点击进去之后的config复制到一个文本文档： 复制到新建的文本文档之后，将文件名改成 config，文件没有后缀名，将改文件放到C:\Users\Admini" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Windows配置kubectl,执行yaml配置文件">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>Windows配置kubectl,执行yaml配置文件</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>首先需要rancher里面的配置文件<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/236455d7410269bd24732b76098403e6.jpg" alt="Windows配置kubectl,执行yaml配置文件"><br /> 将点击进去之后的config复制到一个文本文档：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/1d601ec73098f18d7334a32be59d4d60.jpg" alt="Windows配置kubectl,执行yaml配置文件"><br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/a293903f3ae2045754193e71baad8940.jpg" alt="Windows配置kubectl,执行yaml配置文件"><br /> 复制到新建的文本文档之后，将文件名改成 config，文件没有后缀名，将改文件放到C:\Users\Administrator.kube 该路径下。对应电脑的上是C:\用户\用户名.kube 文件下。在kubectl中默认是去该路径下找配置文件。<br /> 然后载windows版的kubectl可执行文件，地址是：https://storage.googleapis.com/kubernetes-release/release/v1.7.0/bin/windows/amd64/kubectl.exe<br /> 下载下来之后放到一个位置，我这里放到了c盘<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/5c1d8e02c10bf97966616ed8079c5868.jpg" alt="Windows配置kubectl,执行yaml配置文件"><br /> 配置环境变量：在path中添加kubectl.exe的路径：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220606/dad055a2f5760bae1d0366799ebd9d48.jpg" alt="Windows配置kubectl,执行yaml配置文件"><br /> 这里配置上自己的路径即可。<br /> 然后打开黑窗口执行：kubectl查看是否配置成功。<br /> 输入命令：kubectl get nodes<br /> 可以查看当前集群下的节点。<br /> （若重新配置环境变量的话，需要重新打开一个命令行黑窗口）</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-50065.htm">Sequelize入门——从零开始做一个小demo</a></p>
+                                        <p>下一个：<a href="/news/article-50574.htm">动物医院取什么名字好听一点（动物医院牌子）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-19034.htm" title="和田市宠物店电话地址（和田卖宠物的地方）">和田市宠物店电话地址（和田卖宠物的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-47542.htm" title="护肤品牌排行榜10强有哪些（护肤品牌排名榜）">护肤品牌排行榜10强有哪些（护肤品牌排名榜）</a></li>
+                        <li class="py-2"><a href="/news/article-48019.htm" title="领养宠物赚收益的软件有哪些（领养宠物渠道）">领养宠物赚收益的软件有哪些（领养宠物渠道）</a></li>
+                        <li class="py-2"><a href="/news/article-19808.htm" title="国内宠物粮品牌排行前十（国内十大宠物粮食品牌）">国内宠物粮品牌排行前十（国内十大宠物粮食品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-25-clash-node.htm" title="「12月25日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「12月25日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-28584.htm" title="男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)">男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)</a></li>
+                        <li class="py-2"><a href="/news/article-34969.htm" title="动物疫苗的保存温度是多少度合适（动物疫苗运输与储存规范）">动物疫苗的保存温度是多少度合适（动物疫苗运输与储存规范）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-node-share.htm" title="「12月18日」最高速度19.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「12月18日」最高速度19.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-23926.htm" title="在我的城市有一家宠物医院用英语怎么读（在我的城市有一家宠物医院用英语怎么读出来）">在我的城市有一家宠物医院用英语怎么读（在我的城市有一家宠物医院用英语怎么读出来）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-16-clash-node.htm" title="「11月16日」最高速度21.3M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「11月16日」最高速度21.3M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

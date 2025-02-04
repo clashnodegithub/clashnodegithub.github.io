@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-50065.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Sequelize入门——从零开始做一个小demo</title>
+        <meta name="description" content="本文从安装，到连接数据库，到增删改查……一步步详细记录Sequelize的基本使用。 文档 中文文档 sequelize 6 API 安装  npm i sequelize&nbsp; // 这将安装" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-50065.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="Sequelize入门——从零开始做一个小demo" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/0b49f71b11c7ba5b7364fbe44b9fb614.webp" />
+        <meta property="og:release_date" content="2025-02-02T09:28:02" />
+    <meta property="og:updated_time" content="2025-02-02T09:28:02" />
+        <meta property="og:description" content="本文从安装，到连接数据库，到增删改查……一步步详细记录Sequelize的基本使用。 文档 中文文档 sequelize 6 API 安装  npm i sequelize&nbsp; // 这将安装" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Sequelize入门——从零开始做一个小demo">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>Sequelize入门——从零开始做一个小demo</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p id="u0814d52d">本文从安装，到连接数据库，到增删改查……一步步详细记录Sequelize的基本使用。</p> <h2 id="kNGOV">文档</h2> <p id="u73cb09bf"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://www.sequelize.cn/core-concepts/getting-started"  title="中文文档" rel="nofollow">中文文档</a></p> <p id="u3ad73f00"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sequelize.org/api/v6/identifiers.html"  title="sequelize 6 API" rel="nofollow">sequelize 6 API</a></p> <h2 id="JCDsn">安装</h2> <blockquote> <p id="ub57fca5a">npm i sequelize<span style="color:#98c091;">&nbsp; // 这将安装最新版本的 Sequelize</span><br /> npm i mysql2&nbsp;&nbsp;<span style="color:#98c091;">// 手动为所选数据库安装驱动程序 ，这里以 MySQL为例</span></p> </blockquote> <h2 id="AqDsW">使用</h2> <p id="u19e080a6">先尝试写一个简单的demo（demo中用到的配置与api的具体说明见下文，您可以通过目录快速定位）。</p> <blockquote> <ol> <li id="uda569db2"><span style="color:#494949;">新建sequelize-test文件夹</span></li> <li id="udc3a51d8"><span style="color:#494949;">在文件夹下npm init -y</span></li> <li id="ua37e0f1d"><span style="color:#494949;">npm install mysql2 sequelize --save</span></li> <li id="ua8e6bbb6"><span style="color:#494949;">在sequelize-test下新建一个src文件夹。</span></li> </ol> </blockquote> <h3 id="ucmN1">连接数据库</h3> <p id="u0256e2bc">在src下新建：db.js</p> <pre><code class="language-javascript">const { Sequelize } = require('sequelize')  const conf = {   host: 'localhost',   dialect: 'mysql' // 连接到的数据库的方言。mysql、postgres、sqlite、db2、mariadb和mssql之一。 }  // 创建 sequelize 实例，依次传入 database username password options const seq = new Sequelize(   'sequelize_test', // database 数据库名称    'root', // username 用户名   '你的密码', // password 密码   conf // options )</code></pre> <p id="u102a93fc"><span style="color:#fe2c24;">注意要先把对应数据库创建好，不然会连接失败的。</span></p> <h3 id="ocBdk">测试连接</h3> <pre><code class="language-javascript">// 用 authenticate 测试连接 seq.authenticate().then(() =&gt; {   console.log('Connection has been established successfully.'); }).catch((error) =&gt; {   console.error('Unable to connect to the database:', error); })</code></pre> <p id="u369cf371">终端输入<code>node src/db.js</code>，尝试运行一下（下图是连接成功后的样子）：</p> <p><img decoding="async" alt="" class="left" height="56" src="http://img.555519.xyz/uploads/20221229/a485fdc665dd0e7aab4e5af5a28db09b.jpg"></p> <p id="u7ddc7fd3">如果连接失败，记得先检查下用户名和密码有没有输错。可以看一下假如输错密码，会打印出什么：</p> <p><img decoding="async" alt="" class="left" height="79" src="http://img.555519.xyz/uploads/20221229/3585698323b4cddce1df0ba974bb1691.jpg"></p> <p id="u945f365d">如果配置里填的数据库不存在，报错信息如下：</p> <h3 id="%E2%80%8B%E7%BC%96%E8%BE%91"><img fetchpriority="high" decoding="async" alt="" height="97" src="http://img.555519.xyz/uploads/20221229/1f6fed6e50547325da4618312ad94428.jpg"></h3> <h3 id="vTcul">创建模型</h3> <p id="u6b2945a5">在src下新建：model.js。</p> <pre><code class="language-javascript">const Sequelize = require('sequelize') const seq = require('./db')  // User 模型 // define 接收两个参数，第一个是名称，第二个是配置，配置各个列。 const User = seq.define(   // 同步到数据库的 users 表。默认情况下, Sequelize 会自动将模型名转为复数并用作表名。   'user',    {     // id 不用定义，sequelize 会帮我们增加上     // 默认情况下,Sequelize 使用数据类型 DataTypes.DATE 自动向每个模型添加 createdAt 和 updatedAt 字段.     username: {       type: Sequelize.STRING, // 数据类型：VARCHAR(255)       allowNull: false   // 设为必填     },     password: {       type: Sequelize.STRING,       allowNull: false     },     realname: {       type: Sequelize.STRING,     }   } )</code></pre> <h3 id="vkhZu">同步模型到数据库</h3> <p id="u3d041120">在 src 下新建 sync.js 文件，sync就是同步的意思。</p> <pre><code class="language-javascript">const seq = require('./db')  // 需要同步的模型 require('./model')  // 将模型同步到数据库 seq.sync().then(() =&gt; {   process.exit() // 退出进程 })</code></pre> <p id="ufb47ca4d">终端输入<code>node src/sync.js</code>，尝试运行一下：</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="248" src="http://img.555519.xyz/uploads/20221229/8b82aa5448560c63f0e435c71ae129f5.jpg"></p> <p id="u2a506307">可以去 <code>MySQLWorkbench</code> 看一下:</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="263" src="http://img.555519.xyz/uploads/20221229/670785e9df19688b20fc4a46365ae204.jpg"></p> <h3 id="%C2%A0%E6%96%B0%E5%A2%9E%E6%95%B0%E6%8D%AE">新增数据</h3> <p id="u13194c77">在src下新建create.js:</p> <pre><code class="language-javascript">const { User } = require('./model')  !(async function () {   // 创建 user   const ly = await User.create({     username: 'ly',     password: '123',     realname: '梨衣衣'   })   console.log('ly:', ly) })()</code></pre> <p id="u27b25885">看下打印结果：我们只需用到其中的dataValues就够了。</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="431" src="http://img.555519.xyz/uploads/20221229/6a849d41fc2384c098646ef0bf230df8.jpg"></p> <p id="ua575299f">我们可以去<code>MySQLWorkbench</code>看一下：(在示例之前我已经创建了两条数据，第三条是刚才新增的）</p> <p><img loading="lazy" decoding="async" alt="" height="299" src="http://img.555519.xyz/uploads/20221229/7752147714f9ecbe0f37c9dbfbfb117c.jpg"></p> <h3 id="wZebB">查找数据</h3> <p id="ub4dfa885">在src下新建select.js:</p> <p>1.查询一条数据</p> <pre><code class="language-javascript">const { User } = require('./model')  !(async function() {   // 模拟登录(通过查询一条数据的方式)    const sl = await User.findOne({     // 查询条件     where: {       username: 'sl',       password: '123'     }   })   console.log('sl:', sl.dataValues) })()</code></pre> <p id="u04e43d20">在终端输入<code>node src/select.js</code>，看下打印结果:</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="162" src="http://img.555519.xyz/uploads/20221229/607b6ee6bcc49f89fd71ffb921152c60.jpg"></p> <p>2.查询多条数据：</p> <pre><code class="language-javascript">const Sequelize = require('sequelize') const { User } = require('./model')  !(async function() {   const userList = await User.findAll({     // 条件     where: {       username: {         // 模糊查询，相当于`select * from users where username like '%${keyword}%'`         [Sequelize.Op.like]: '%l%'        }     },     // 排序     order: [       ['id', 'desc'] // 相当于 SQL 语句：order by id desc，根据id倒序排序     ]   })   console.log('userList:', userList.map(item =&gt; item.dataValues)) })()</code></pre> <p id="u566553e5">在终端输入<code>node src/select.js</code>，看下打印结果:</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="231" src="http://img.555519.xyz/uploads/20221229/ac2def031dba31c884b8016a98d5669b.jpg"></p> <h3 id="ctAie">修改数据</h3> <p id="u20fee497">在src下新建update.js:</p> <pre><code class="language-javascript">const { User } = require('./model')  !(async function () {   const res = await User.update(     // 修改的内容 （示例修改 realname 和 password）     {       realname: '梨衣',       password: '111'     },     // 条件（要修改哪条数据）     {       where: {         id: 3       }     }   )   console.log('修改后的res', res) })()</code></pre> <p id="u856756ff">在终端输入<code>node src/update.js</code>，看下打印结果:</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="73" src="http://img.555519.xyz/uploads/20221229/066d30b17e1f0905aec3ab02c28a49d2.jpg"></p> <p id="uae16dd01">res的值是本次操作影响到的条数：[1]表示成功修改了1条。[0]表示修改了0条。</p> <p id="u70502900">我们可以去<code>MySQLWorkbench</code>看一下，最后一条数据已经被改变：</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="142" src="http://img.555519.xyz/uploads/20221229/1c85bc9ebab0d25eb52dfda9db202c9f.jpg"></p> <h3 id="Dqk09">删除数据</h3> <p id="u894fe575">在src下新建delete.js:</p> <pre><code class="language-javascript">const { User } = require('./model')  !(async function () {   const res = await User.destroy({     where: {       id: 3,       username: 'ly'     }   })   console.log('删除后的res：', res) })()</code></pre> <p id="u0664ed07">在终端输入<code>node src/delete.js</code>，看下打印结果:</p> <p><img loading="lazy" decoding="async" alt="" class="left" height="77" src="http://img.555519.xyz/uploads/20221229/20688cb8b4bc0cc3995f10f9c1ebfcd0.jpg"></p> <p id="u51b11a2f">res的值是本次操作删除条数：1表示成功删除了1条。</p> <p id="u19187c39"> <hr id="MUd1d"/> </h1> <h2 id="w2U9L">创建实例</h2> <p id="u894ed368">配置数据库名称、用户名、密码等，实例化sequelize。</p> <p id="ubc2fb8c7">new Sequelize的时候能传入的一些参数：<code>database</code> ，<code>username</code> ，<code>password</code> ，<code>options </code>。</p> <p id="u65887b4a">其中，options里面有<code>host</code>，<code>port</code>，<code>password</code>，<code>database</code>，<code>dialect</code>等。</p> <h3 id="Zzals">具体参数见<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-constructor-constructor"  title="文档" rel="nofollow">文档</a>（constructor）</h3> <h3 id="Y935M">dialect</h3> <p id="ua638749a">连接到的数据库的方言。mysql、postgres、sqlite、db2、mariadb和mssql之一。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221229/86e1c3fed4123fb7181e400013329f47.jpg"></p> <h2 id="WxSzk">API</h2> <h3 id="enHmH"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-authenticate"  title="authenticate()" rel="nofollow">authenticate()</a></h3> <p id="u3268b138">可以使用该方法来测试连接是否正常。</p> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221229/f3c7a5bcccdb80e6c48779d2f15e2243.jpg"></p> <h3 id="fzJ4Z"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-define"  title="define()" rel="nofollow">define()</a></h3> <ul> <li id="u399ee41c">定义一个新模型，表示数据库中的一个表。</li> <li id="u0825216c">第二个参数传入一个对象，用来定义表的每一列，对象的键对应表的列。</li> </ul> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221229/b928c5ad09ffa94ca82ab41bd4a77ded.jpg"></p> <h3 id="WwWkW"><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-method-sync"  title="sync()" rel="nofollow">sync()</a></h3> <ul> <li id="ufdb2884f">将所有定义过的模型同步到数据库。</li> </ul> <p class="img-center"><img decoding="async" alt="" src="http://img.555519.xyz/uploads/20221229/15c3b30d4c8250f310704c0b68732586.jpg"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-49545.htm">妙三多猫疫苗多少钱一针（妙三多猫疫苗多少毫升）</a></p>
+                                        <p>下一个：<a href="/news/article-50066.htm">Windows配置kubectl,执行yaml配置文件</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-subscribe-node.htm" title="「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19808.htm" title="国内宠物粮品牌排行前十（国内十大宠物粮食品牌）">国内宠物粮品牌排行前十（国内十大宠物粮食品牌）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe.htm" title="「1月16日」最高速度18M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「1月16日」最高速度18M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-ssr-subscribe.htm" title="「12月28日」最高速度20.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「12月28日」最高速度20.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-20720.htm" title="开一家动物医院需要的专业技术人员至少为（开动物医院什么资质）">开一家动物医院需要的专业技术人员至少为（开动物医院什么资质）</a></li>
+                        <li class="py-2"><a href="/news/article-35956.htm" title="宠物粮种类（宠物粮品牌大全）">宠物粮种类（宠物粮品牌大全）</a></li>
+                        <li class="py-2"><a href="/news/article-28584.htm" title="男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)">男士品牌鞋休闲十大排名(男款品牌休闲鞋有哪些牌子)</a></li>
+                        <li class="py-2"><a href="/news/article-27194.htm" title="想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）">想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）</a></li>
+                        <li class="py-2"><a href="/news/article-41601.htm" title="MySQL备份迁移之mydumper">MySQL备份迁移之mydumper</a></li>
+                        <li class="py-2"><a href="/news/article-44072.htm" title="宠物猫打疫苗可以自己打吗视频（给猫打疫苗自己能打吗）">宠物猫打疫苗可以自己打吗视频（给猫打疫苗自己能打吗）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

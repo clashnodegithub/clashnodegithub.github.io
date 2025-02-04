@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clashnodegithub.github.io/news/article-19807.htm" />
@@ -8,6 +8,17 @@
     <title>Java8新特性-函数式接口（lambda基础）</title>
         <meta name="description" content="Java 8 函数式接口 - Functional Interface 阅读目录 什么是函数式接口（Functional Interface） 函数式接口用途 关于@FunctionalInterfa" />
         <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-19807.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="Java8新特性-函数式接口（lambda基础）" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/d3fa7d2f5dc9ce10cb6eee7a8cf7e8ab.webp" />
+        <meta property="og:release_date" content="2024-12-01T10:01:27" />
+    <meta property="og:updated_time" content="2024-12-01T10:01:27" />
+        <meta property="og:description" content="Java 8 函数式接口 - Functional Interface 阅读目录 什么是函数式接口（Functional Interface） 函数式接口用途 关于@FunctionalInterfa" />
+        
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
     <!-- ========================= CSS here ========================= -->
@@ -16,6 +27,22 @@
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java8新特性-函数式接口（lambda基础）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
 <script>
@@ -140,16 +167,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-8-10-free-subscribe-node.htm" title="「8月10日」最高速度22.8M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接">「8月10日」最高速度22.8M/S，2024年V2ray/SSR/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-7-25-node-share-links.htm" title="「7月25日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「7月25日」最高速度19.1M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-26-free-high-speed-nodes.htm" title="「10月26日」最高速度21M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「10月26日」最高速度21M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-11-8-free-subscribe-node.htm" title="「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接">「11月8日」最高速度22.1M/S，2024年SSR/Shadowrocket/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-20720.htm" title="开一家动物医院需要的专业技术人员至少为（开动物医院什么资质）">开一家动物医院需要的专业技术人员至少为（开动物医院什么资质）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-10-22-clash-node-daily-updates.htm" title="「10月22日」最高速度21.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「10月22日」最高速度21.2M/S，2024年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-29499.htm" title="动物医院需要什么设备才能进入市场（动物医院医疗设备）">动物医院需要什么设备才能进入市场（动物医院医疗设备）</a></li>
-                        <li class="py-2"><a href="/news/article-33796.htm" title="动物疫苗去哪里买便宜又好（动物疫苗证去哪里办怎么办）">动物疫苗去哪里买便宜又好（动物疫苗证去哪里办怎么办）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-6-20-node-share-links.htm" title="「6月20日」最高速度21.8M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「6月20日」最高速度21.8M/S，2024年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-8-24-free-ssr-node.htm" title="「8月24日」最高速度22.7M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接">「8月24日」最高速度22.7M/S，2024年Clash/V2ray/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-31883.htm" title="如何使用TIME_FORMAT()函数在MySQL中卸载时间/日期值？">如何使用TIME_FORMAT()函数在MySQL中卸载时间/日期值？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-18-node-share.htm" title="「12月18日」最高速度19.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接">「12月18日」最高速度19.2M/S，2024年Shadowrocket/V2ray/Clash/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-21-free-v2ray-subscribe.htm" title="「12月21日」最高速度19.6M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「12月21日」最高速度19.6M/S，2024年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24146.htm" title="三国杀动态皮肤视频（三国杀动态皮肤视频下载）">三国杀动态皮肤视频（三国杀动态皮肤视频下载）</a></li>
+                        <li class="py-2"><a href="/news/article-41096.htm" title="用python实现文件的词频统计">用python实现文件的词频统计</a></li>
+                        <li class="py-2"><a href="/news/article-32367.htm" title="1970年农历4月27日天干地支（1970年农历4月27日阳历是多少）">1970年农历4月27日天干地支（1970年农历4月27日阳历是多少）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-14-free-ssr-subscribe.htm" title="「11月14日」最高速度19M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「11月14日」最高速度19M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-44071.htm" title="动物疫苗多少钱一支啊图片及价格表大全（动物疫苗多少钱一支啊图片及价格表大全集）">动物疫苗多少钱一支啊图片及价格表大全（动物疫苗多少钱一支啊图片及价格表大全集）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-ssr-subscribe.htm" title="「12月28日」最高速度20.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「12月28日」最高速度20.4M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-29789.htm" title="全国宠物粮食基地排名榜（国内宠物粮食十大厂家）">全国宠物粮食基地排名榜（国内宠物粮食十大厂家）</a></li>
                     </ul>
     </div>
 </div>
@@ -161,28 +188,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">3</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-09/" title="2024-09 归档">2024-09</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">31</span> <a href="/date/2024-08/" title="2024-08 归档">2024-08</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2024-07/" title="2024-07 归档">2024-07</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2024-06/" title="2024-06 归档">2024-06</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>

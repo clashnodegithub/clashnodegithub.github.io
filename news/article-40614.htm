@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://clashnodegithub.github.io/news/article-40614.htm" />
@@ -8,6 +8,17 @@
     <title>时间轮原理及其在框架中的应用</title>
         <meta name="description" content="1.1 为什么要使用时间轮 在平时开发中，经常会与定时任务打交道。下面举几个定时任务处理的例子。 1）心跳检测。在Dubbo中，需要有心跳机制来维持Consumer与Provider的长连接，默认的心" />
         <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-40614.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="时间轮原理及其在框架中的应用" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/8112c05f244ce3c6de3775b91c5eebf3.webp" />
+        <meta property="og:release_date" content="2025-01-14T07:35:44" />
+    <meta property="og:updated_time" content="2025-01-14T07:35:44" />
+        <meta property="og:description" content="1.1 为什么要使用时间轮 在平时开发中，经常会与定时任务打交道。下面举几个定时任务处理的例子。 1）心跳检测。在Dubbo中，需要有心跳机制来维持Consumer与Provider的长连接，默认的心" />
+        
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Place favicon.ico in the root directory -->
     <!-- ========================= CSS here ========================= -->
@@ -16,6 +27,22 @@
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
     <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="时间轮原理及其在框架中的应用">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
 <script>
@@ -140,16 +167,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/news/article-20263.htm" title="Java中  判断String 是否为空的几种方法（null 、== 、equals）">Java中  判断String 是否为空的几种方法（null 、== 、equals）</a></li>
-                        <li class="py-2"><a href="/news/article-41598.htm" title="MySQL SELECT子句中如何使用Groups函数？">MySQL SELECT子句中如何使用Groups函数？</a></li>
-                        <li class="py-2"><a href="/news/article-24147.htm" title="动物疫苗周期多久（动物疫苗注射后多久产生抗体）">动物疫苗周期多久（动物疫苗注射后多久产生抗体）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-13-free-high-speed-nodes.htm" title="「1月13日」最高速度20.3M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「1月13日」最高速度20.3M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-31885.htm" title="用JS实现一个秒表计时器">用JS实现一个秒表计时器</a></li>
-                        <li class="py-2"><a href="/news/article-23011.htm" title="附近领养狗狗的地方在哪里（附近领养狗狗的地方在哪里呀）">附近领养狗狗的地方在哪里（附近领养狗狗的地方在哪里呀）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-15-node-share-links.htm" title="「1月15日」最高速度19.7M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「1月15日」最高速度19.7M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/news/article-29043.htm" title="动物注射疫苗的流程视频讲解大全（动物疫苗注射注意事项）">动物注射疫苗的流程视频讲解大全（动物疫苗注射注意事项）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-clash-node.htm" title="「12月25日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「12月25日」最高速度19.2M/S，2024年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-1-8-free-ssr-node.htm" title="「1月8日」最高速度21.4M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「1月8日」最高速度21.4M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-24861.htm" title="南京农大动物医院怎么样啊（南京农业大学动物医学院地址）">南京农大动物医院怎么样啊（南京农业大学动物医学院地址）</a></li>
+                        <li class="py-2"><a href="/news/article-22554.htm" title="宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）">宠物粮品牌排名榜最新图片（宠物粮品牌排名榜最新图片）</a></li>
+                        <li class="py-2"><a href="/news/article-45081.htm" title="上海宠物医院在线咨询电话（上海宠物医院在线咨询电话号码）">上海宠物医院在线咨询电话（上海宠物医院在线咨询电话号码）</a></li>
+                        <li class="py-2"><a href="/news/article-20724.htm" title="北京芭比堂动物医院有限责任公司（北京芭比堂宠物）">北京芭比堂动物医院有限责任公司（北京芭比堂宠物）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-12-clash-windows.htm" title="「11月12日」最高速度21.7M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「11月12日」最高速度21.7M/S，2024年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39624.htm" title="领养宠物定期回访是否合理呢 领养宠物定期回访是否合理呢怎么写">领养宠物定期回访是否合理呢 领养宠物定期回访是否合理呢怎么写</a></li>
+                        <li class="py-2"><a href="/news/article-27653.htm" title="天津宠物领养机构名单整理（天津宠物猫领养中心）">天津宠物领养机构名单整理（天津宠物猫领养中心）</a></li>
+                        <li class="py-2"><a href="/news/article-33797.htm" title="动物疫苗空瓶回收处理制度及流程图片（动物疫苗空瓶回收处理制度及流程图片）">动物疫苗空瓶回收处理制度及流程图片（动物疫苗空瓶回收处理制度及流程图片）</a></li>
+                        <li class="py-2"><a href="/news/article-27194.htm" title="想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）">想学宠物医生应该报考什么大学呢（学宠物医生需要学历吗）</a></li>
+                        <li class="py-2"><a href="/news/article-49545.htm" title="妙三多猫疫苗多少钱一针（妙三多猫疫苗多少毫升）">妙三多猫疫苗多少钱一针（妙三多猫疫苗多少毫升）</a></li>
                     </ul>
     </div>
 </div>
@@ -161,16 +188,16 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
             </li>
                         <li class="py-2">
                 <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">34</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">25</span> <a href="/date/2024-10/" title="2024-10 归档">2024-10</a></h4>
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
             </li>
                     </ul>
     </div>
