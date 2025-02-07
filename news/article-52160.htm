@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-52160.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>vue跨组件传参详解</title>
+        <meta name="description" content="Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，com" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-52160.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="vue跨组件传参详解" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/24b125098208ae9ba48f64d7801b2a4a.webp" />
+        <meta property="og:release_date" content="2025-02-06T05:29:48" />
+    <meta property="og:updated_time" content="2025-02-06T05:29:48" />
+        <meta property="og:description" content="Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，com" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue跨组件传参详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="#">关于</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#">联系</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>vue跨组件传参详解</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。<br /> 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，components 文件夹下都是子组件。</p> <p>1、父组件可以使用 props 把数据传给子组件。<br /> 2、子组件可以使用 $emit 触发父组件的自定义事件。<br /> 一、父组件向子组件传递数据</p> <p>在 Vue 中，可以使用 props 向子组件传递数据。</p> <p>子组件部分：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/b481d384b3d2f76991720ea6359a0a09.jpg" alt="vue跨组件传参详解"></p> <p>这是 header.vue 的 HTML 部分，logo 是在 data 中定义的变量。</p> <p>如果需要从父组件获取 logo 的值，就需要使用 props: [‘logo’]<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/facd8ffc873960a238676d1d9115b403.jpg" alt="vue跨组件传参详解"><br /> 在 props 中添加了元素之后，就不需要在 data 中再添加变量了</p> <p>父组件部分：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/49cc2afad5b559857fe42464b367b63f.jpg" alt="vue跨组件传参详解"></p> <p>在调用组件的时候，使用 v-bind 将 logo 的值绑定为 App.vue 中定义的变量 logoMsg<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/fb4ccb2461ac932e07cd5d3ae98b9a6a.jpg" alt="vue跨组件传参详解"><br /> 然后就能将App.vue中 logoMsg 的值传给 header.vue 了：</p> <p>二、子组件向父组件传递数据</p> <p>子组件主要通过事件传递数据给父组件</p> <p>子组件部分：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/74fc117a4e965550acf078c1b1a7ca38.jpg" alt="vue跨组件传参详解"></p> <p>这是 login.vue 的 HTML 部分，当的值发生变化的时候，将 username 传递给 App.vue</p> <p>首先声明一个了方法 setUser，用 change 事件来调用 setUser</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/126c4ef1e4d62214c87fd69176e0a37b.jpg" alt="vue跨组件传参详解"></p> <p>在 setUser 中，使用了 $emit 来遍历 transferUser 事件，并返回 this.username</p> <p>其中 transferUser 是一个自定义的事件，功能类似于一个中转，this.username 将通过这个事件传递给父组件</p> <p>父组件部分：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/b8d7955b59dd576f50531665e23612f6.jpg" alt="vue跨组件传参详解"></p> <p>在父组件 App.vue 中，声明了一个方法 getUser，用 transferUser 事件调用 getUser 方法，获取到从子组件传递过来的参数 username</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/cc911b4b603780b611ffaf8f1bd5c34f.jpg" alt="vue跨组件传参详解"></p> <p>getUser 方法中的参数 msg 就是从子组件传递过来的参数 username</p> <p>三、子组件向子组件传递数据</p> <p>Vue 没有直接子对子传参的方法，建议将需要传递数据的子组件，都合并为一个组件。如果一定需要子对子传参，可以先从传到父组件，再传到子组件。</p> <p>为了便于开发，Vue 推出了一个状态管理工具 Vuex，可以很方便实现组件之间的参数传递</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-52159.htm">springboot中spring.profiles.include的妙用</a></p>
+                                        <p>下一个：<a href="/news/article-52689.htm">免费宠物领养平台有哪些软件可以用的（宠物领养软件推荐）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-21630.htm" title="合肥宠物领养网站（合肥宠物领养网站推荐）">合肥宠物领养网站（合肥宠物领养网站推荐）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-29-clash-v2ray-ss-ssr.htm" title="「11月29日」最高速度22.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「11月29日」最高速度22.8M/S，2024年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-47542.htm" title="护肤品牌排行榜10强有哪些（护肤品牌排名榜）">护肤品牌排行榜10强有哪些（护肤品牌排名榜）</a></li>
+                        <li class="py-2"><a href="/news/article-32841.htm" title="宠物领养协议书怎么生效的呢（宠物领养协议书怎么写）">宠物领养协议书怎么生效的呢（宠物领养协议书怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-22552.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-30-node-share-links.htm" title="「11月30日」最高速度20.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「11月30日」最高速度20.7M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-19348.htm" title="塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）">塞尔达海拉鲁大陆神庙（塞尔达传说海拉鲁神庙在哪）</a></li>
+                        <li class="py-2"><a href="/news/article-31309.htm" title="宠物寄养协议合同电子版有效吗怎么写（宠物店寄养协议文字pdf文件）">宠物寄养协议合同电子版有效吗怎么写（宠物店寄养协议文字pdf文件）</a></li>
+                        <li class="py-2"><a href="/news/article-34281.htm" title="动物疫苗龙头企业 动物疫苗龙头企业有哪些">动物疫苗龙头企业 动物疫苗龙头企业有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-26-clash-node.htm" title="「1月26日」最高速度22.3M/S，2025年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接">「1月26日」最高速度22.3M/S，2025年SSR/V2ray/Clash/Shadowrocket每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
