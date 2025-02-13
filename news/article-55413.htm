@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-55413.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>多语言文本到音素转换工具phonemizer实践</title>
+        <meta name="description" content="音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（phonemizer），实践了下，觉得还挺有用的，因此记录一下过程。 （1）　下载源" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-55413.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="多语言文本到音素转换工具phonemizer实践" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/b936ab3ed22862e6ceefd413bca1a42c.webp" />
+        <meta property="og:release_date" content="2025-02-12T09:08:46" />
+    <meta property="og:updated_time" content="2025-02-12T09:08:46" />
+        <meta property="og:description" content="音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（phonemizer），实践了下，觉得还挺有用的，因此记录一下过程。 （1）　下载源" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="多语言文本到音素转换工具phonemizer实践">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>多语言文本到音素转换工具phonemizer实践</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> <p>音素是语言识别领域的最小单元，文本到音素的转换是TTS任务（文本转语音）中重要的步骤之一，最近用了下python包（<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/bootphon/phonemizer"  rel="nofollow">phonemizer</a>），实践了下，觉得还挺有用的，因此记录一下过程。</p> <p>（1）　下载源码，https://github.com/bootphon/phonemizer</p> <p>（2）　进行源码的编译和查看，发现其调用的是<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://www.cstr.ed.ac.uk/projects/festival"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">festival</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">&nbsp;and</span><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=http://espeak.sourceforge.net/"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">espeak</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">/</span><a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://github.com/espeak-ng/espeak-ng/"  style="background-color:rgb(255,255,255);color:rgb(3,102,214);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;" rel="nofollow">espeak-ng</a><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">&nbsp;两个系统的东西，即相当于提供了一个接口调用的东西。上述两种音素转换工具的区别如下：Festival provides US English phonemization with syllable tokenization, espeak endows multiple languages but without syllable boundaries.，可见espeak支持更多的语言。</span></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">（3）　利用源码进行调试，编译，简化其输入和输出，即可进行调试。</span></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);"><br /></span></p> <p style="text-align:left;"><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;"><span style="background-color:rgb(255,255,255);">实验一：festival调用：en--&gt;us，输入hello，得到的是美语的音素。</span></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/8a8db7d7f055c01aef8a3614fb76a9da.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">实验二：espeak调用：en--&gt;us，输入hello，得到的是美语的音素。</span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/7477b28b9cb0efad5c439027e79a7cb9.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <p><span style="color:rgb(36,41,46);font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';text-align:left;background-color:rgb(255,255,255);">实验三：espeak调用：fr--&gt;fr，输入</span><span style="text-align:left;background-color:rgb(255,255,255);"><span style="font-family:arial, sans-serif;color:#212121;"><span style="font-size:25px;white-space:pre-wrap;">法语的“你好世界”</span></span><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;">，得到的是法语的音素。</span></span></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/9129056ae1b3a727625dfe778a181e39.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> <pre style="font-family:'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;font-size:13.6px;margin-bottom:16px;padding-top:16px;padding-bottom:16px;line-height:1.45;background-color:rgb(246,248,250);color:rgb(36,41,46);text-align:left;">实验三：espeak调用：spanish，输入<span style="color:rgb(79,79,79);font-size:16px;font-family:'PingFang SC', 'Microsoft YaHei', SimHei, Arial, SimSun;background-color:rgb(255,255,255);"><span style="font-family:arial, sans-serif;color:#212121;"><span style="font-size:25px;white-space:pre-wrap;">西班牙语的“你好”</span></span><span style="font-family:'-apple-system', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';color:#24292e;">，得到的是西班牙语的音素。</span></span></pre> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220905/e6650a64130232337c39e981308e3994.jpg" alt="多语言文本到音素转换工具phonemizer实践"></p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-55412.htm">Jackson 枚举序列化/反序列化</a></p>
+                                        <p>下一个：<a href="/news/article-55962.htm">天津领养狗狗中心地址 天津领养狗狗中心地址电话</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-31883.htm" title="如何使用TIME_FORMAT()函数在MySQL中卸载时间/日期值？">如何使用TIME_FORMAT()函数在MySQL中卸载时间/日期值？</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-17-free-shadowrocket-node.htm" title="「12月17日」最高速度19.7M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「12月17日」最高速度19.7M/S，2024年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-22552.htm" title="Python并发编程之多进程">Python并发编程之多进程</a></li>
+                        <li class="py-2"><a href="/news/article-26730.htm" title="动物疫苗贵吗多少钱一次（动物疫苗多少钱一支）">动物疫苗贵吗多少钱一次（动物疫苗多少钱一支）</a></li>
+                        <li class="py-2"><a href="/news/article-27651.htm" title="Vue3中如何使用ref获取元素节点全面解析">Vue3中如何使用ref获取元素节点全面解析</a></li>
+                        <li class="py-2"><a href="/news/article-55962.htm" title="天津领养狗狗中心地址 天津领养狗狗中心地址电话">天津领养狗狗中心地址 天津领养狗狗中心地址电话</a></li>
+                        <li class="py-2"><a href="/news/article-37643.htm" title="JavaScript 对象的四种方式比较详解_javascript技巧">JavaScript 对象的四种方式比较详解_javascript技巧</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-12-9-clash-windows.htm" title="「12月9日」最高速度18.2M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「12月9日」最高速度18.2M/S，2024年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-53224.htm" title="宠物猫疫苗一般多少钱一针啊视频（宠物猫疫苗接种）">宠物猫疫苗一般多少钱一针啊视频（宠物猫疫苗接种）</a></li>
+                        <li class="py-2"><a href="/news/article-38638.htm" title="小猫要和主人一起睡觉（小猫要和主人一起睡觉吗为什么）">小猫要和主人一起睡觉（小猫要和主人一起睡觉吗为什么）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
