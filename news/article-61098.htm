@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-61098.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Java的虚拟线程（协程）特性开启预览阶段，多线程开发的难度将大大降低</title>
+        <meta name="description" content="高并发、多线程一直是Java编程中的难点，也是面试题中的要点。Java开发者也一直在尝试使用多线程来解决应用服务器的并发问题。但是多线程并不容易，为此一个新的技术出现了，这就是虚拟线程。 传统多线程的" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-61098.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="Java的虚拟线程（协程）特性开启预览阶段，多线程开发的难度将大大降低" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/fdf53c5e1463fdddbf3b42dd6b93af86.webp" />
+        <meta property="og:release_date" content="2025-02-22T07:12:17" />
+    <meta property="og:updated_time" content="2025-02-22T07:12:17" />
+        <meta property="og:description" content="高并发、多线程一直是Java编程中的难点，也是面试题中的要点。Java开发者也一直在尝试使用多线程来解决应用服务器的并发问题。但是多线程并不容易，为此一个新的技术出现了，这就是虚拟线程。 传统多线程的" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Java的虚拟线程（协程）特性开启预览阶段，多线程开发的难度将大大降低">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>Java的虚拟线程（协程）特性开启预览阶段，多线程开发的难度将大大降低</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<p>高并发、多线程一直是<strong>Java</strong>编程中的难点，也是面试题中的要点。<strong>Java</strong>开发者也一直在尝试使用多线程来解决应用服务器的并发问题。但是多线程并不容易，为此一个新的技术出现了，这就是虚拟线程。</p> <h2 id="传统多线程的痛点">传统多线程的痛点</h2> <p>但是编写多线程代码是非常不容易的，难以控制的执行顺序，共享变量的线程安全性，异常的可观察性等等都是多线程编程的难点。</p> <p>如果每个请求在请求的持续时间内都在一个线程中处理，那么为了提高应用程序的吞吐量，线程的数量必须随着吞吐量的增长而增长。不幸的是线程是稀缺资源，创建一个线程的代价是昂贵的，即使引入了池化技术也无法降低新线程的创建成本，而且 JDK 当前的线程实现将应用程序的吞吐量限制在远低于硬件可以支持的水平。</p> <p>为此很多开发人员转向了异步编程，例如<code>CompletableFuture</code>或者现在正热的反应式框架。但是这些技术要么摆脱不了“回调地狱”，要么缺乏可观测性。</p> <p>解决这些痛点、增强Java平台的和谐，实现每个请求使用独立线程（thread-per-request style）这种风格成为必要之举。能否实现一种“成本低廉”的虚拟线程来映射到系统线程以减少对系统线程的直接操作呢？思路应该是没问题的！于是Java社区发起了关于虚拟线程的<a href="http://www.m6000.cn/wp-content/themes/begin%20lts/inc/go.php?url=https://openjdk.java.net/jeps/425"  target="_blank" rel="nofollow">JEP 425</a>提案。</p> <h2 id="虚拟线程">虚拟线程</h2> <p>虚拟线程（<strong>virtual threads</strong>）应该非常廉价而且可以无需担心系统硬件资源被大量创建，并且不应该被池化。应该为每个应用程序任务创建一个新的虚拟线程。因此，大多数虚拟线程将是短暂的并且具有浅层调用堆栈，只执行单个任务<strong>HTTP</strong> 客户端调用或单个<strong>JDBC</strong> 查询。与之对应的<strong>平台线程（ Platform Threads，也就是现在传统的JVM线程 ）</strong>是重量级且昂贵的，因此通常必须被池化。它们往往寿命长，有很深的调用堆栈，并且在许多任务之间共享。</p> <p>总而言之，虚拟线程保留了与 Java 平台的设计相协调的、可靠的独立请求线程（thread-per-request style），同时优化了硬件的利用。使用虚拟线程不需要学习新概念，甚至需要改掉现在操作多线程的习惯，使用更加容易上手的<strong>API</strong>、兼容以前的多线程设计、并且丝毫不会影响代码的拓展性。</p> <h3 id="平台线程和虚拟线程的不同">平台线程和虚拟线程的不同</h3> <p>为了更好理解这一个设计，草案对这两种线程进行了比较。</p> <h4 id="现在的线程">现在的线程</h4> <p>现在每个<code>java.lang.Thread</code>都是一个平台线程，平台线程在底层操作系统线程上运行 Java 代码，并在代码的整个生命周期内捕获操作系统线程。平台线程数受限于 OS 线程数。</p> <blockquote> <p>平台线程并不会因为加入虚拟线程而退出历史舞台。</p> </blockquote> <h4 id="未来的虚拟线程">未来的虚拟线程</h4> <p>虚拟线程是由 JDK 而不是操作系统提供的线程的轻量级实现。它们是用户模式线程的一种形式，在其他多线程语言中已经成功（比如Golang中的协程和Erlang中的进程）。 虚拟线程采用 M:N 调度，其中大量 (M) 虚拟线程被调度为在较少数量 (N) 的 OS 线程上运行。 JDK 的虚拟线程调度程序是一种<code>ForkJoinPool</code>工作窃取的机制，以 FIFO 模式运行。</p> <p>我们可以很随意地创建10000个虚拟线程：</p> <pre><code class="language-java">// 预览代码 try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {     IntStream.range(0, 10_000).forEach(i -&gt; {         executor.submit(() -&gt; {             Thread.sleep(Duration.ofSeconds(1));             return i;         });     }); }</code></pre> <p>无需担心硬件资源是否扛得住，反过来如果你使用<code>Executors.newCachedThreadPool()</code>创建10000个平台线程，在大多数操作系统上很容易因资源不足而崩溃。</p> <h5 id="为吞吐量而设计">为吞吐量而设计</h5> <p>但是这里依然要说明一点，<strong>虚拟线程并是为了提升执行速度而设计</strong>。它并不比平台线程速度快，它们的存在是为了提供规模（更高的吞吐量），而不是速度（更低的延迟）。它们的数量可能比平台线程多得多，因此根据利特尔定律，它们可以实现更高吞吐量所需的更高并发性。</p> <p>换句话说，虚拟线程可以显着提高应用程序吞吐量</p> <ul> <li> <p>并发任务的数量很高（超过几千个），并且</p> </li> <li> <p>工作负载不受 CPU 限制，因为在这种情况下，拥有比处理器内核多得多的线程并不能提高吞吐量。</p> </li> </ul> <p>虚拟线程有助于提高传统服务器应用程序的吞吐量，正是因为此类应用程序包含大量并发任务，这些任务花费大量的时间等待。</p> <h5 id="增强可观测性">增强可观测性</h5> <p>编写清晰的代码并不是全部。对正在运行的程序状态的清晰表示对于故障排除、维护和优化也很重要，JDK 长期以来一直提供调试、分析和监视线程的机制。 在虚拟线程中也会增强代码的可观测性，让开发人员更好地调试代码。</p> <h2 id="新的线程api">新的线程API</h2> <p>为此增加了新的线程API设计，目前放出的部分如下：</p> <ul> <li> <p><code>Thread.Builder</code> 线程构建器。</p> </li> <li> <p><code>ThreadFactory</code> 能批量构建相同特性的线程工厂。</p> </li> <li> <p><code>Thread.ofVirtual()</code> 创建一个虚拟线程。</p> </li> <li> <p><code>Thread.ofPlatform()</code> 创建一个平台线程。</p> </li> <li> <p><code>Thread.startVirtualThread(Runnable)</code> 一种创建然后启动虚拟线程的便捷方式。</p> </li> <li> <p><code>Thread.isVirtual()</code> 测试线程是否是虚拟线程。</p> </li> </ul> <blockquote> <p>还有很多就不一一演示了，有兴趣的自行去看<strong>JEP425</strong>。</p> </blockquote> <h2 id="总结">总结</h2> <p><strong>JEP425</strong>还有很多的细节，基于我个人理解能力的不足只能解读这么多了。协程在Java社区已经呼唤了很久了，现在终于有了实质性的动作，这是一个令人振奋的好消息。不过这个功能涉及的东西还是很多的，包括平台线程的兼容性、对<code>ThreadLocal</code>的一些影响、对<strong>JUC</strong>的影响。可能需要多次预览才能最终落地。胖哥可能赶不上那个时候了，不过很多年轻的同学应该能够赶上。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-60506.htm">德国进口空压机主要有哪些品牌的(德国进口空压机主要有哪些品牌型号)</a></p>
+                                        <p>下一个：<a href="/news/article-61099.htm">同安流浪狗救助站在哪里（同安流浪狗救助站在哪里办理）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-25330.htm" title="宠物食品加工厂的前景 宠物食品加工厂的前景如何">宠物食品加工厂的前景 宠物食品加工厂的前景如何</a></li>
+                        <li class="py-2"><a href="/news/article-41097.htm" title="养猫接种疫苗多少钱（养猫的疫苗要多少钱）">养猫接种疫苗多少钱（养猫的疫苗要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-31885.htm" title="用JS实现一个秒表计时器">用JS实现一个秒表计时器</a></li>
+                        <li class="py-2"><a href="/news/article-46080.htm" title="成年猫注射疫苗多少毫升（成年猫打几针）">成年猫注射疫苗多少毫升（成年猫打几针）</a></li>
+                        <li class="py-2"><a href="/news/article-56525.htm" title="狗狗领养协议一般是怎么规定的呢（狗狗领养手续）">狗狗领养协议一般是怎么规定的呢（狗狗领养手续）</a></li>
+                        <li class="py-2"><a href="/news/article-43091.htm" title="畜牧兽医站为什么不给狗看病（兽医畜牧站能不能治疗狗狗）">畜牧兽医站为什么不给狗看病（兽医畜牧站能不能治疗狗狗）</a></li>
+                        <li class="py-2"><a href="/news/article-41096.htm" title="用python实现文件的词频统计">用python实现文件的词频统计</a></li>
+                        <li class="py-2"><a href="/free-nodes/2024-11-27-clash-windows.htm" title="「11月27日」最高速度20.4M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「11月27日」最高速度20.4M/S，2024年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-50065.htm" title="Sequelize入门——从零开始做一个小demo">Sequelize入门——从零开始做一个小demo</a></li>
+                        <li class="py-2"><a href="/news/article-55962.htm" title="天津领养狗狗中心地址 天津领养狗狗中心地址电话">天津领养狗狗中心地址 天津领养狗狗中心地址电话</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">66</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-11/" title="2024-11 归档">2024-11</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
