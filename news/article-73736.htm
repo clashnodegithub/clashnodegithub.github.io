@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-73736.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>java8新特性Stream流中anyMatch和allMatch和noneMatch的区别详解</title>
+        <meta name="description" content="判断数据列表中是否存在任意一个元素符合设置的predicate条件，如果是就返回true，否则返回false。  接口定义：   boolean anyMatch(Predicate&lt;? sup" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-73736.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="java8新特性Stream流中anyMatch和allMatch和noneMatch的区别详解" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/7624d7d58d16cf3201ebad137a17c82e.webp" />
+        <meta property="og:release_date" content="2025-03-14T07:06:38" />
+    <meta property="og:updated_time" content="2025-03-14T07:06:38" />
+        <meta property="og:description" content="判断数据列表中是否存在任意一个元素符合设置的predicate条件，如果是就返回true，否则返回false。  接口定义：   boolean anyMatch(Predicate&lt;? sup" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java8新特性Stream流中anyMatch和allMatch和noneMatch的区别详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>java8新特性Stream流中anyMatch和allMatch和noneMatch的区别详解</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="htmledit_views"> </h1> <p>判断数据列表中是否存在任意一个元素符合设置的predicate条件，如果是就返回true，否则返回false。</p> <ul> <li>接口定义： <ul> <li> <p>boolean anyMatch(Predicate&lt;? super T&gt; predicate);</p> </li> </ul> </li> <li>方法描述： <ul> <li> <p>在anyMatch 接口定义中是接收 Predicate 类型参数，在Lamdba表达式中 Predicate&lt;T&gt; 是接收一个T类型参数，然后经过逻辑验证返回布尔值结果。这里anyMatch表示，判断的条件里，任意一个元素符合条件，就返回true值。</p> </li> </ul> </li> <li> <p>使用场景：</p> <ul> <li> <p>两个集合的交集</p> </li> </ul> </li> </ul> <pre><code class="language-java">    @Test     public void a17() {         List&lt;User&gt; list = new ArrayList&lt;&gt;();         list.add(new User("张三", 12, "南京"));         list.add(new User("李四", 13, "北京"));         list.add(new User("王五", 14, "苏州"));         list.add(new User("王五", 17, "苏州"));         List&lt;User&gt; userList = new ArrayList&lt;&gt;();         userList.add(new User("李四", 13, "北京"));         userList.add(new User("王五", 20, "广州"));         // 获取两个集合中有相同名字或者年龄相同的，只要满足其中一个条件即可，只会返回list集合里面的元素，有先后顺序返回         List&lt;User&gt; users1 = list.stream()                 .filter(a -&gt; userList.stream().anyMatch(b -&gt; a.getName().equals(b.getName()) || a.getAge() == b.getAge()))                 .collect(Collectors.toList());         // 获取两个集合中相同名字并且年龄相同的，必须同时满足两个条件         List&lt;User&gt; users2 = list.stream()                 .filter(a -&gt; userList.stream().anyMatch(b -&gt; a.getName().equals(b.getName()) &amp;&amp; a.getAge() == b.getAge()))                 .collect(Collectors.toList());         users1.forEach(item -&gt; {             System.out.println(item.getName() + item.getAge() + item.getEmailAddress());         });         /** 第一种结果展示：          * 李四13北京          * 王五14苏州          * 王五17苏州          */         users2.forEach(item -&gt; {             System.out.println(item.getName() + item.getAge() + item.getEmailAddress());         });         /** 第二种结果展示：          * 李四13北京          */     }   @Test public void a15() {         Stream&lt;String&gt; stream = Stream.of("ac", "bcddddd", "bd");         // 判断stream中其中任何一个元素中只要有包含b字符串或者l字符串就返回true         boolean isMatch = stream.anyMatch(str -&gt; str.contains("b") || str.contains("l"));         System.out.println(isMatch);  // true }</code></pre> </h1> <p>判断数据列表中全部元素都符合设置的predicate条件，如果是就返回true，否则返回false，流为空时总是返回true。</p> <ul> <li>接口定义： <ul> <li> <p>boolean allMatch(Predicate&lt;? super T&gt; predicate);</p> </li> </ul> </li> <li>方法描述： <ul> <li> <p>在allMatch 接口定义中是接收 Predicate 类型参数，在Lamdba表达式中 Predicate&lt;T&gt; 是接收一个T类型参数，然后经过逻辑验证返回布尔值结果。这里allMatch表示，判断的条件里，全部元素符合条件，就返回true值。</p> </li> </ul> </li> <li> <p>适用场景：</p> <ul> <li> <p>基本类型的集合，但不适合于对象集合（我自己的理解）</p> </li> <li> <p>allMatch里面不适合写 &amp;&amp; ，只适合写 ||，如果写&amp;&amp;，编译器会自动报黄色波浪线</p> </li> </ul> </li> </ul> <pre><code class="language-java">@Test public void a18() {         List&lt;String&gt; typeList1 = Arrays.asList("1", "2");         List&lt;String&gt; typeList2 = Arrays.asList("1", "2", "3", "4");         // 集合列表中全部元素必须在allMatch里面的那些字符串，只要全部元素中有任意一个不同的元素在AllMatch中就返回false         boolean isMatch1 = typeList1.stream().allMatch(a -&gt; a.equals("1") || a.equals("2") || a.equals("3"));         boolean isMatch2 = typeList2.stream().allMatch(a -&gt; a.equals("1") || a.equals("2") || a.equals("3"));         System.out.println(isMatch1);   // true         System.out.println(isMatch2);   // false }   @Test public void a16() {         Stream&lt;String&gt; stream = Stream.of("abc", "abc", "bcd");         // 判断stream中全部所有元素必须全部包含b字符串和c字符串就返回true，如果有一个元素不包含这两个字符串就返回false         boolean isMatch = stream.allMatch(str -&gt; str.contains("b") &amp;&amp; str.contains("c"));         System.out.println(isMatch);  // true }</code></pre> </h1> <p>判断数据列表中全部元素都不符合设置的predicate条件，如果是就返回true，否则返回false，流为空时总是返回true。</p> <ul> <li>接口定义： <ul> <li> <p>boolean noneMatch(Predicate&lt;? super T&gt; predicate);</p> </li> </ul> </li> <li>方法描述： <ul> <li> <p>在noneMatch接口定义中是接收 Predicate 类型参数，在Lamdba表达式中 Predicate&lt;T&gt; 是接收一个T类型参数，然后经过逻辑验证返回布尔值结果。这里noneMatch表示与allMatch相反，判断的条件里的元素，所有的元素都不符合，就返回true值。</p> </li> </ul> </li> <li> <p>适用场景：</p> <ul> <li> <p>两个集合的差集 （本人只想到这么做，如果有更简洁的可以告诉我怎么写，感谢0.0）</p> </li> </ul> </li> </ul> <pre><code class="language-java">@Test public void a17() {         List&lt;User&gt; list = new ArrayList&lt;&gt;();         list.add(new User("张三", 12, "南京"));         list.add(new User("李四", 13, "北京"));         list.add(new User("王五", 14, "苏州"));         list.add(new User("王五", 17, "苏州"));         List&lt;User&gt; userList = new ArrayList&lt;&gt;();         userList.add(new User("李四", 13, "北京"));         userList.add(new User("王五", 20, "广州"));         // 获取list集合和userList集合过滤掉两者集合中名字和年龄相同的数据后，只返回list集合的数据         List&lt;User&gt; users3 = list.stream()                 .filter(a -&gt; userList.stream().noneMatch(b -&gt; a.getName().equals(b.getName()) &amp;&amp; a.getAge() == b.getAge()))                 .collect(Collectors.toList());         // 获取userlist集合和list集合过滤掉两者集合中名字和年龄相同的数据后，只返回userList集合的数据         List&lt;User&gt; users4 = userList.stream()                 .filter(a -&gt; list.stream().noneMatch(b -&gt; a.getName().equals(b.getName()) &amp;&amp; a.getAge()==b.getAge()))                 .collect(Collectors.toList());         // 获取list和userList集合之间的差集，将上面两者集合合并，就是两个集合的差集         List&lt;User&gt; arrayList = new ArrayList&lt;&gt;();         arrayList.addAll(users3);         arrayList.addAll(users4);         arrayList.forEach(item -&gt; {             System.out.println(item.getName() + item.getAge() + item.getEmailAddress());         });         /**  两者集合之间的差集          * 张三12南京          * 王五14苏州          * 王五17苏州          * 王五20广州          */         System.out.println("-------------------");         users3.forEach(item -&gt; {             System.out.println(item.getName() + item.getAge() + item.getEmailAddress());         });         /**  只返回list集合中过滤掉之后的元素集合          * 张三12南京          * 王五14苏州          * 王五17苏州          */         System.out.println("-------------------");         users4.forEach(item -&gt; {             System.out.println(item.getName() + item.getAge() + item.getEmailAddress());         });         /**  只返回userList集合中过滤掉之后的元素集合          * 王五20广州          */ }  @Test public void a19() {         List&lt;String&gt; typeList1 = Arrays.asList("1", "2");         List&lt;String&gt; typeList2 = Arrays.asList("1", "2", "3", "4");         // 集合列表中全部元素只要都不在noneMatch里面的判断中，就返回true，集合列表中任何元素中只要有一个在noneMatch的判断中就返回false         boolean isMatch1 = typeList1.stream().noneMatch(a -&gt; a.equals("3") || a.equals("4"));         boolean isMatch2 = typeList2.stream().noneMatch(a -&gt; a.equals("1") || a.equals("2") || a.equals("3"));         System.out.println(isMatch1);   // true         System.out.println(isMatch2);   // false }  /** noneMatch */ @Test public void a20() {         Stream&lt;String&gt; stream = Stream.of("dddd", "ee", "qqq", "bcfff");         // 判断 stream 中所有的元素都不是以 a 开头，就返回true，如果所有的元素中只要其中一个元素是以a开头的，就返回false         boolean isMatch = stream.noneMatch(str-&gt;str.startsWith("a"));         System.out.println(isMatch);  // true }</code></pre> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-73073.htm">猫猫为什么不能打头（为什么说猫不能打）</a></p>
+                                        <p>下一个：<a href="/news/article-73738.htm">动物疫苗注射方法有几种图片 动物疫苗注射方法有几种图片大全</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-5-clash-v2ray-ss-ssr.htm" title="「2月5日」最高速度21.7M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接">「2月5日」最高速度21.7M/S，2025年SSR/Shadowrocket/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-36667.htm" title="动物疫苗板块有哪些 动物疫苗板块前景分析">动物疫苗板块有哪些 动物疫苗板块前景分析</a></li>
+                        <li class="py-2"><a href="/news/article-53772.htm" title="Kafka 的安装及启动">Kafka 的安装及启动</a></li>
+                        <li class="py-2"><a href="/news/article-64077.htm" title="宠物领养有什么平台吗可靠吗（宠物领养有什么平台吗可靠吗安全吗）">宠物领养有什么平台吗可靠吗（宠物领养有什么平台吗可靠吗安全吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-clash-windows.htm" title="「1月7日」最高速度20M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「1月7日」最高速度20M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-node-share.htm" title="「3月5日」最高速度21.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「3月5日」最高速度21.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-64075.htm" title="SpringBoot三种方式实现定时任务">SpringBoot三种方式实现定时任务</a></li>
+                        <li class="py-2"><a href="/news/article-51626.htm" title="宠物领养机构在哪里查询（宠物领养去哪里领养）">宠物领养机构在哪里查询（宠物领养去哪里领养）</a></li>
+                        <li class="py-2"><a href="/news/article-35956.htm" title="宠物粮种类（宠物粮品牌大全）">宠物粮种类（宠物粮品牌大全）</a></li>
+                        <li class="py-2"><a href="/news/article-48410.htm" title="中国兽药厂家排名前50强名单（中国兽药厂排行榜）">中国兽药厂家排名前50强名单（中国兽药厂排行榜）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">42</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
