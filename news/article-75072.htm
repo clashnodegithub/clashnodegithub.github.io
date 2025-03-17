@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-75072.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>python3.5上使用virtualenv创建虚拟环境的坑</title>
+        <meta name="description" content="一、坑一：安装的virtualenv版本太高 　　显示使用virtualenv 安装虚拟环境报错  　　出现这个问题就是说明你的virtualev安装的版本太高，降低一下版本重新安装即可，我这里使用的" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-75072.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="python3.5上使用virtualenv创建虚拟环境的坑" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/ae55a5f255486f2d80b63b9a6a428bb5.webp" />
+        <meta property="og:release_date" content="2025-03-16T10:29:57" />
+    <meta property="og:updated_time" content="2025-03-16T10:29:57" />
+        <meta property="og:description" content="一、坑一：安装的virtualenv版本太高 　　显示使用virtualenv 安装虚拟环境报错  　　出现这个问题就是说明你的virtualev安装的版本太高，降低一下版本重新安装即可，我这里使用的" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="python3.5上使用virtualenv创建虚拟环境的坑">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>python3.5上使用virtualenv创建虚拟环境的坑</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h3>一、坑一：安装的virtualenv版本太高</h3> <p>　　显示使用virtualenv 安装虚拟环境报错</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0b6f027b83f77da46d434b31ae234e52.jpg" alt="python3.5上使用virtualenv创建虚拟环境的坑" width="700" loading="lazy"/></p> <p>　　出现这个问题就是说明你的virtualev安装的版本太高，降低一下版本重新安装即可，我这里使用的是15这个版本</p> <p>　　pip install virtualenv==15.0.0</p> <h3>二、坑2：pip的版本太高</h3> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/3ba4e323ad062b420755e198679229f7.jpg" alt="python3.5上使用virtualenv创建虚拟环境的坑" width="700" loading="lazy"/></p> <p>&nbsp;　　如果出现上面的错误，说明你的pip的版本太高，没办法，只能说是python3.5的版本太低了，工作历史遗留问题，没办法，必须要使用python3.5，只能乖乖将pip的版本</p> <p class="md-end-block md-p"><span class="md-plain">　　python3.5最高支持pip=20的版本</span></p> <p class="md-end-block md-p md-focus"><span class="md-plain">　　所以解决方案：将本机的pip版本降到20或20一下。</span></p> <p class="md-end-block md-p md-focus"><span class="md-plain">　　通过：python3 -m pip install pip==20.3.4 安装指定版本</span></p> <p class="md-end-block md-p md-focus"><span class="md-plain">　　安装好了以后在/usr/local/lib/python3.5/dist-packages下</span></p> <p class="md-end-block md-p md-focus"><span class="md-plain"><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/cfddefe0ab8b5ceeab55ab5041487cd2.jpg" alt="python3.5上使用virtualenv创建虚拟环境的坑" width="700" loading="lazy"/></span></p> <p>　　然后再将这两个文件复制到我们创建的虚拟环境中</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/c910d285cd08c9f446287d6a63e41eb2.jpg" alt="python3.5上使用virtualenv创建虚拟环境的坑" width="700" loading="lazy"/></p> <p class="md-end-block md-p md-focus"> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-74425.htm">动物疫苗企业名单查询官网（动物疫苗上市公司排名）</a></p>
+                                        <p>下一个：<a href="/news/article-75073.htm">宠物疫苗可以带上高铁吗现在（宠物疫苗能上地铁吗）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-69766.htm" title="动物疫苗的了解和看法英语作文初中（动物疫苗 英文）">动物疫苗的了解和看法英语作文初中（动物疫苗 英文）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-clash-windows.htm" title="「2月8日」最高速度19M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「2月8日」最高速度19M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-9-free-shadowrocket-node.htm" title="「2月9日」最高速度18.2M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「2月9日」最高速度18.2M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-24-free-high-speed-nodes.htm" title="「2月24日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接">「2月24日」最高速度19.7M/S，2025年Clash/SSR/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-11-node-share.htm" title="「2月11日」最高速度21.4M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接">「2月11日」最高速度21.4M/S，2025年Shadowrocket/Clash/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-clash.htm" title="「1月9日」最高速度21.6M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接">「1月9日」最高速度21.6M/S，2025年V2ray/Clash/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-39625.htm" title="动物疫苗间隔多久打一次好呢 动物疫苗间隔多久打一次好呢视频">动物疫苗间隔多久打一次好呢 动物疫苗间隔多久打一次好呢视频</a></li>
+                        <li class="py-2"><a href="/news/article-55963.htm" title="动物防疫注射的主要步骤包括（动物防疫注射栏）">动物防疫注射的主要步骤包括（动物防疫注射栏）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-node-subscribe-links.htm" title="「3月8日」最高速度21.9M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接">「3月8日」最高速度21.9M/S，2025年V2ray/Clash/Shadowrocket/SSR每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-59938.htm" title="有没有免费领养狗狗的网站 有没有免费领养狗狗的网站啊">有没有免费领养狗狗的网站 有没有免费领养狗狗的网站啊</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">51</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
