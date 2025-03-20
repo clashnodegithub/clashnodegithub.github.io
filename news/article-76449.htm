@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-76449.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>多线程与高并发原理篇：3_java内存模型</title>
+        <meta name="description" content="1. 概述 Java 内存模型即 Java Memory Model，简称 JMM。从抽象的角度来看，JMM 定义了线程和主内存之间的抽象关系，线程之间的共享变量存储在主内存中，每个线程都有一个私有的" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-76449.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="多线程与高并发原理篇：3_java内存模型" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/2d273b472223254b320d4e220dafc215.webp" />
+        <meta property="og:release_date" content="2025-03-18T06:13:32" />
+    <meta property="og:updated_time" content="2025-03-18T06:13:32" />
+        <meta property="og:description" content="1. 概述 Java 内存模型即 Java Memory Model，简称 JMM。从抽象的角度来看，JMM 定义了线程和主内存之间的抽象关系，线程之间的共享变量存储在主内存中，每个线程都有一个私有的" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="多线程与高并发原理篇：3_java内存模型">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>多线程与高并发原理篇：3_java内存模型</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<h2 id="1-概述">1. 概述</h2> <p>Java 内存模型即 Java Memory Model，简称 JMM。从抽象的角度来看，JMM 定义了线程和主内存之间的<code>抽象关系</code>，线程之间的共享变量存储在主内存中，每个线程都有一个私有的<code>工作内存</code>，工作内存中存储了该线程以读/写共享变量的<code>副本</code>。工作内存是 JMM 的一个抽象概念，并不真实存在。它涵盖了缓存、写缓冲区、寄存器以及其他的硬件和编译器优化。</p> <p>Java内存模型是跟cpu缓存模型是类似的，基于cpu缓存模型来建立的Java内存模型，只不过Java内存模型是标准化的，屏蔽掉底层不同的计算机的区别。</p> <h2 id="2-java内存模型带来的问题">2. Java内存模型带来的问题</h2> <p>Java内存模型规定了线程对主内存的操作具备<code>原子性</code>，包括以下8个操作：<br /> lock：主内存，标识变量为线程独占；<br /> unlock：主内存，解锁线程独占变量；<br /> read：主内存，读取内存到线程缓存（工作内存）；<br /> load：工作内存，read后的值放入线程本地变量副本；<br /> use：工作内存，传值给执行引擎；<br /> assign：工作内存，执行引擎结果赋值给线程本地变量；<br /> store：工作内存，存值到主内存给write备用；<br /> write：主内存，写变量值。</p> <p>假设如下程序，两个未加同步控制的线程去同时对i自增，会出现什么结果呢？</p> <pre><code class="language-java">public class Test {     private int i = 0;     public void increment() {         i++;         System.out.println("i=" + i);     }      public static void main(String[] args) {         Test t = new Test();         new Thread(() -&gt; t.increment()).start();         new Thread(() -&gt; t.increment()).start();     } }</code></pre> <p>通过运行会出现下面三种情况</p> <pre><code>i=1 i=1</code></pre> <p>或者</p> <pre><code>i=1 i=2</code></pre> <p>或者</p> <pre><code>i=2 i=2</code></pre> <p>下面通过图来解释第一种情况</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/eb7a34fa4ab756c76d386df45e32ab73.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <p>A、B两个线程都有自己的工作内存，A自从执行read操作，从主内存读取i=0，随后load操作载入自己的工作内存，接着执行use操作，对i进行自增，然后从新赋值操作assign，此时线程A的工作内存i=1，随后store操作进行存储，最后写回到主内存，最终i=1。</p> <p>B线程也进行如此操作，read-&gt;load-&gt;use-&gt;assign-&gt;store-&gt;write，最终也得出i=1。</p> <p>出现第二种，关键在于B线程read操作是从A线程刷新到主内存后才去取值的。执行顺序是：线程A自增-&gt;线程A打印i最终值-&gt;线程B自增-&gt;线程B打印i最终值，如下图</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/1d4be180c0e10ac48066f80492025f86.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <p>出现第三种，是线程A自增后把i=1刷新到主内存，在执行打印之前，线程B优先从主内存获取i=1，进行read-&gt;load-&gt;use-&gt;assign-&gt;store-&gt;write，将i=1自增为i=2，随后线程A执行打印操作，执行顺序是：线程A自增-&gt;线程B自增-&gt;线程A打印i最终值-&gt;线程B打印i最终值，如下图</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/fde55b6f4c9590b3500c39c14ce12ca5.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <h2 id="3-可见性有序性原子性">3. 可见性、有序性、原子性</h2> <p>虽然java内存模型JMM提供为每个线程提供了每个工作内存，存放共享变量的变量副本，但是如果线程没有作可见性的控制，从上述过程中可以看出，多线程下对共享变量的修改，其结果依然是不可预知的。</p> <h3 id="31-可见性">3.1 可见性</h3> <p>volatile关键词，在程序级别，保证对一个共享变量的修改对另外线程立马可见。上述程序对i加入volatile关键字，可以保证能始终得到第二种结果。</p> <p>下面用程序来演示：</p> <pre><code class="language-java">Class VolatileExample { 	int  a = 0; 	volatile boolean flg = false; 	 	public void writer() { 		a = 1; 		flg = true; 	} 	 	public void reader() { 		if (flg) { 			int i = a; 			...... 		} 	} }</code></pre> <p>图解如下：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/851f805e3e6e4ec5f48430d3093b297c.jpg" alt="多线程与高并发原理篇：3_java内存模型"><br /> 上述过程概括为两句话：<br /><code>当写一个volatile修饰的变量时，JMM会把线程对应的本地内存中的共享变量值刷新的主内存；</code><br /><code>当读一个volatile修饰的变量时，JMM会把该线程对应的本地内存置为无效，从主内存读取最新的共享变量的值。</code><br /> 上述过程解释了volatile的可见性问题。</p> <h3 id="32-有序性">3.2 有序性</h3> <p>对于一些代码，编译器或者处理器，为了提高代码执行效率，会将指令重排序，就是说比如下面的代码：</p> <pre><code class="language-java">flg = false; //线程1: parpare(); // 准备资源 flg = true;  //线程2: while(!flg) { 	Thread.sleep(1000); } execute();// 基于准备好的资源执行操作</code></pre> <p>重排序之后，让flag = true先执行了，会导致线程2直接跳过while等待，执行某段代码，结果prepare()方法还没执行，资源还没准备好呢，此时就会导致代码逻辑出现异常。</p> <p>volatile通过内存屏障，保证volatile修饰的变量，与其前后定义的值，不发生指令重排。JMM定义了如下四种内存屏障StoreStore、StoreLoad、LoadLoad、LoadStore;</p> <p>对于volatile写，在前面插入StoreStore，禁止上面的普通读与下面的volatile写重排序；后面插入StoreLoad，禁止上面的volatile写与下面的普通读重排序，如下图：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/0f9e6953f8cc97cb72920b496c012015.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <p>对于volatile读，在后面插入LoadLoad，禁止上面的volatile读与下面的普通读重排序；下面再插入LoadStore，禁止上面的volatile读与下面的普通写重排序，如下图：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/de4efe32949579660821be8de61f0d49.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <p><strong>happens-before原则</strong></p> <p>为了保证多线程之间在某些情况下一定不能发生指令重排，java内存模型规定了8条原则。</p> <ol> <li> <p><strong>程序次序规则</strong> ：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在后面的操作；</p> </li> <li> <p><strong>管程锁定规则</strong>：一个unLock操作先行发生于后面对<strong>同一个锁</strong>的lock操作；</p> </li> <li> <p><strong>volatile变量规则</strong>：对一个变量的写操作先行发生于后面对这个变量的读操作；</p> </li> <li> <p><strong>线程启动规则</strong>：Thread对象的start()方法先行发生于此线程的每个一个动作；</p> </li> <li> <p><strong>线程终结规则</strong>：线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、Thread.isAlive()的返回值手段检测到线程已经终止执行；</p> </li> <li> <p><strong>线程中断规则</strong>：对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生；</p> </li> <li> <p><strong>对象终结规则</strong>：一个对象的初始化完成先行发生于他的finalize()方法的开始；</p> </li> <li> <p><strong>传递性</strong>：如果操作A先行发生于操作B，而操作B又先行发生于操作C，则可以得出操作A先行发生于操作C；</p> </li> </ol> <h3 id="33-原子性">3.3 原子性</h3> <p>一般情况下，volatile修饰的变量是不能保证原子性的，例如i++是复合操作，先读取，再修改变量的值，是不具备原子性的</p> <h2 id="4-volatile作用">4. volatile作用</h2> <p>通过上面的描述，可以得出volatile的作用主要有两点：</p> <ul> <li>保证线程可见性</li> <li>禁止指令重排序</li> </ul> <h2 id="5-hotspot层面实现">5. HotSpot层面实现</h2> <p>通过hsdis工具查看java汇编文件，首先下载hsdis-amd64.dll到 \jdk1.8\jre\bin ,然后设置VM参数，-XX:+UnlockDiagnosticVMOptions -XX:+PrintAssembly</p> <p>最终执行时会在volatile变量前加如下信息</p> <pre><code class="language-java">lock addl $0x0,(%rsp)</code></pre> <p>如下图：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/f7d7590233d0cc6dcdb2fff533f11c85.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <h2 id="6-底层cpu硬件层面实现">6. 底层CPU硬件层面实现</h2> <p>上述过程中，JVM虚拟机会向CPU发送<code>lock前置指令</code>，将这个变量所在的缓存行数据写回主内存，如果其他CPU缓存的值是旧值，就会有问题，在多CPU（这里指多个核）下，每个CPU都会通过<code>嗅探</code>总线上传播的数据是否与自己的缓存一致，通过<code>缓存一致性协议</code>，最终保证多个CPU内部缓存数据的一致性，下面通过图来说明。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/d361715cd9ac666a318cd87d8e988563.jpg" alt="多线程与高并发原理篇：3_java内存模型"></p> <p>虚拟机的lock前缀指令，在底层硬件是通过缓存一致性协议来完成的，不同的CPU缓存一致性协议不一样， 有MSI、MESI、MOSI、Synapse、Firefly及Dragon，英特尔CPU的缓存一致性协议是通过MESI来完成的。</p> <p>为了实现MESI协议，需要解释两个专业术语：<code>flush处理器缓存</code>、<code>refresh处理器缓存</code>。</p> <p>flush处理器缓存，他的意思就是把自己更新的值刷新到高速缓存里去（或者是主内存），因为必须要刷到高速缓存（或者是主内存）里，才有可能在后续通过一些特殊的机制让其他的处理器从自己的高速缓存（或者是主内存）里读取到更新的值。除了flush以外，他还会发送一个消息到总线（bus），通知其他处理器，某个变量的值被他给修改了。</p> <p>refresh处理器缓存，他的意思就是说，处理器中的线程在读取一个变量的值的时候，如果发现其他处理器的线程更新了变量的值，必须从其他处理器的高速缓存（或者是主内存）里，读取这个最新的值，更新到自己的高速缓存中。所以说，为了保证可见性，在底层是通过MESI协议、flush处理器缓存和refresh处理器缓存，这一整套机制来保障的。</p> <p>flush和refresh，这两个操作，flush是强制刷新数据到高速缓存（主内存），不要仅仅停留在写缓冲器里面；refresh，是从总线嗅探发现某个变量被修改，必须强制从其他处理器的高速缓存（或者主内存）加载变量的最新值到自己的高速缓存里去。</p> <h2 id="7-总结">7. 总结</h2> <p>本篇主要讲述了Java内存模型的作用，屏蔽了底层实现的细节，同时带来了一系列问题，导致线程之间的三大问题，即有序性、可见性、原子性，volatile关键字修饰的变量在多线程之间的作用，以及初步分析了底层是如何实现的，如果要深入分析，这个得具体看MESI协议规范，以及不同硬件底层的实现逻辑，比如英特尔的操作手册，后面有时间再接着深入。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-75767.htm">我想开一家宠物店大概需要多少钱?（开一家宠物店需要投资多少）</a></p>
+                                        <p>下一个：<a href="/news/article-76450.htm">南京免费领养猫咪的地方在哪里啊（南京免费领养宠物的地方在哪里）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-free-node-subscribe-links.htm" title="「3月13日」最高速度18.1M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「3月13日」最高速度18.1M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-35468.htm" title="合肥猫猫领养网站有哪些（合肥哪里有领养猫狗的地方）">合肥猫猫领养网站有哪些（合肥哪里有领养猫狗的地方）</a></li>
+                        <li class="py-2"><a href="/news/article-57650.htm" title="动物疫苗是什么单位负责的呢（动物疫苗是什么单位负责的呢图片）">动物疫苗是什么单位负责的呢（动物疫苗是什么单位负责的呢图片）</a></li>
+                        <li class="py-2"><a href="/news/article-75765.htm" title="学宠物医生上什么专科学校好（学宠物医生有前景吗?）">学宠物医生上什么专科学校好（学宠物医生有前景吗?）</a></li>
+                        <li class="py-2"><a href="/news/article-53773.htm" title="NET Core 操作达梦数据库DM8的两种方式">NET Core 操作达梦数据库DM8的两种方式</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-18-shadowrocket-node.htm" title="「3月18日」最高速度18.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「3月18日」最高速度18.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-38636.htm" title="宠物粮食品牌前十名有哪些牌子图片及名字（宠物粮食品牌前十名有哪些牌子图片及名字叫什么）">宠物粮食品牌前十名有哪些牌子图片及名字（宠物粮食品牌前十名有哪些牌子图片及名字叫什么）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-24-free-node-subscribe-links.htm" title="「1月24日」最高速度22M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「1月24日」最高速度22M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-8-clash-windows.htm" title="「2月8日」最高速度19M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接">「2月8日」最高速度19M/S，2025年Clash/Shadowrocket/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-47542.htm" title="护肤品牌排行榜10强有哪些（护肤品牌排名榜）">护肤品牌排行榜10强有哪些（护肤品牌排名榜）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
