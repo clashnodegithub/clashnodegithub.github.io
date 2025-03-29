@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-83372.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>SQL知识梳理之关系模型（一）</title>
+        <meta name="description" content="文章目录  SQL知识梳理之关系模型（一）   关系模型   主键 外键   一对多 多对多 一对一     索引   索引的概念与用法 唯一索引 Tips:         关系模型 关系数据库是建" />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-83372.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="SQL知识梳理之关系模型（一）" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/0b49f71b11c7ba5b7364fbe44b9fb614.webp" />
+        <meta property="og:release_date" content="2025-03-28T09:55:57" />
+    <meta property="og:updated_time" content="2025-03-28T09:55:57" />
+        <meta property="og:description" content="文章目录  SQL知识梳理之关系模型（一）   关系模型   主键 外键   一对多 多对多 一对一     索引   索引的概念与用法 唯一索引 Tips:         关系模型 关系数据库是建" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="SQL知识梳理之关系模型（一）">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>SQL知识梳理之关系模型（一）</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <div class="toc"> <h3>文章目录</h3> <ul> <li><a href="#SQL_1" rel="nofollow">SQL知识梳理之关系模型（一）</a></li> <li> <ul> <li><a href="#_3" rel="nofollow">关系模型</a></li> <li> <ul> <li><a href="#_19" rel="nofollow">主键</a></li> <li><a href="#_33" rel="nofollow">外键</a></li> <li> <ul> <li><a href="#_35" rel="nofollow">一对多</a></li> <li><a href="#_97" rel="nofollow">多对多</a></li> <li><a href="#_103" rel="nofollow">一对一</a></li> </ul> </li> </ul> </li> <li><a href="#_115" rel="nofollow">索引</a></li> <li> <ul> <li><a href="#_117" rel="nofollow">索引的概念与用法</a></li> <li><a href="#_153" rel="nofollow">唯一索引</a></li> <li><a href="#Tips_177" rel="nofollow">Tips:</a></li> </ul> </li> </ul> </li> </ul> </div> </h1> <h2> <a id="_3" rel="nofollow"></a>关系模型</h2> <p>关系数据库是建立在关系模型上的。而关系模型本质上就是若干个存储数据的二维表，可以把它们看作很多Excel表。</p> <p>表的每一行称为记录（Record），记录是一个逻辑意义上的数据。</p> <p>表的每一列称为字段（Column），同一个表的每一行记录都拥有相同的若干字段。</p> <p>字段定义了数据类型（整型、浮点型、字符串、日期等），以及是否允许为<code>NULL</code>。注意<code>NULL</code>表示字段数据不存在。一个整型字段如果为<code>NULL</code>不表示它的值为<code>0</code>，同样的，一个字符串型字段为<code>NULL</code>也不表示它的值为空串<code>''</code>。</p> <p>通常情况下，字段应该避免允许为NULL。不允许为NULL可以简化查询条件，加快查询速度，也利于应用程序读取数据后无需判断是否为NULL。</p> <p>和Excel表有所不同的是，关系数据库的表和表之间需要建立“一对多”，“多对一”和“一对一”的关系，这样才能够按照应用程序的逻辑来组织和存储数据。</p> <p>在关系数据库中，关系是通过<strong>主键</strong>和<strong>外键</strong>来维护的。</p> <h3> <a id="_19" rel="nofollow"></a>主键</h3> <p>例如，假设我们把<code>name</code>字段作为主键，那么通过名字<code>小明</code>或<code>小红</code>就能唯一确定一条记录。但是，这么设定，就没法存储同名的同学了，因为插入相同主键的两条记录是不被允许的。</p> <p>对主键的要求，最关键的一点是：记录一旦插入到表中，主键最好不要再修改，因为主键是用来唯一定位记录的，修改了主键，会造成一系列的影响。</p> <p>由于主键的作用十分重要，如何选取主键会对业务开发产生重要影响。如果我们以学生的身份证号作为主键，似乎能唯一定位记录。然而，身份证号也是一种业务场景，如果身份证号升位了，或者需要变更，作为主键，不得不修改的时候，就会对业务产生严重影响。</p> <p>所以，选取主键的一个基本原则是：<strong>不使用任何业务相关的字段作为主键</strong>。</p> <p>因此，身份证号、手机号、邮箱地址这些看上去可以唯一的字段，均<em>不可</em>用作主键。</p> <p>作为主键最好是完全业务无关的字段，我们一般把这个字段命名为<code>id</code>。</p> <h3> <a id="_33" rel="nofollow"></a>外键</h3> <h4> <a id="_35" rel="nofollow"></a>一对多</h4> <p>当我们用主键唯一标识记录时，我们就可以在<code>students</code>表中确定任意一个学生的记录：</p> <table> <thead> <tr> <th>id</th> <th>name</th> <th>other columns…</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>小明</td> <td>…</td> </tr> <tr> <td>2</td> <td>小红</td> <td>…</td> </tr> </tbody> </table> <p>我们还可以在<code>classes</code>表中确定任意一个班级记录：</p> <table> <thead> <tr> <th>id</th> <th>name</th> <th>other columns…</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>一班</td> <td>…</td> </tr> <tr> <td>2</td> <td>二班</td> <td>…</td> </tr> </tbody> </table> <p>但是我们如何确定<code>students</code>表的一条记录，例如，<code>id=1</code>的小明，属于哪个班级呢？</p> <p>由于一个班级可以有多个学生，在关系模型中，这两个表的关系可以称为“一对多”，即一个<code>classes</code>的记录可以对应多个<code>students</code>表的记录。</p> <p>为了表达这种一对多的关系，我们需要在<code>students</code>表中加入一列<code>class_id</code>，让它的值与<code>classes</code>表的某条记录相对应：</p> <table> <thead> <tr> <th>id</th> <th>class_id</th> <th>name</th> <th>other columns…</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>1</td> <td>小明</td> <td>…</td> </tr> <tr> <td>2</td> <td>1</td> <td>小红</td> <td>…</td> </tr> <tr> <td>5</td> <td>2</td> <td>小白</td> <td>…</td> </tr> </tbody> </table> <p>这样，我们就可以根据<code>class_id</code>这个列直接定位出一个<code>students</code>表的记录应该对应到<code>classes</code>的哪条记录。</p> <p>例如：</p> <ul> <li>小明的<code>class_id</code>是<code>1</code>，因此，对应的<code>classes</code>表的记录是<code>id=1</code>的一班；</li> <li>小红的<code>class_id</code>是<code>1</code>，因此，对应的<code>classes</code>表的记录是<code>id=1</code>的一班；</li> <li>小白的<code>class_id</code>是<code>2</code>，因此，对应的<code>classes</code>表的记录是<code>id=2</code>的二班。</li> </ul> <p>在<code>students</code>表中，通过<code>class_id</code>的字段，可以把数据与另一张表关联起来，这种列称为<code>外键</code>。</p> <p><strong>外键并不是通过列名实现的，而是通过定义外键约束实现的：</strong></p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> fk_class_id <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span>class_id<span class="token punctuation">)</span> <span class="token keyword">REFERENCES</span> classes<span class="token punctuation">(</span>id<span class="token punctuation">)</span> </code></pre> <p>其中，外键约束的名称<code>fk_class_id</code>可以任意，<code>FOREIGN KEY (class_id)</code>指定了<code>class_id</code>作为外键，<code>REFERENCES classes (id)</code>指定了这个外键将关联到<code>classes</code>表的<code>id</code>列（即<code>classes</code>表的主键）。</p> <p>**通过定义外键约束，关系数据库可以保证无法插入无效的数据。**即如果<code>classes</code>表不存在<code>id=99</code>的记录，<code>students</code>表就无法插入<code>class_id=99</code>的记录。</p> <p>由于外键约束会降低数据库的性能，大部分互联网应用程序为了追求速度，并不设置外键约束，而是仅靠应用程序自身来保证逻辑的正确性。这种情况下，<code>class_id</code>仅仅是一个普通的列，只是它起到了外键的作用而已。</p> <p>要删除一个外键约束，也是通过<code>ALTER TABLE</code>实现的：</p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">DROP</span> <span class="token keyword">FOREIGN</span> <span class="token keyword">KEY</span> fk_class_id </code></pre> <p><strong>注意：删除外键约束并没有删除外键这一列。删除列是通过<code>DROP COLUMN ...</code>实现的。</strong></p> <h4> <a id="_97" rel="nofollow"></a>多对多</h4> <p>通过一个表的外键关联到另一个表，我们可以定义出一对多关系。有些时候，还需要定义“多对多”关系。例如，一个老师可以对应多个班级，一个班级也可以对应多个老师，因此，班级表和老师表存在多对多关系。</p> <p>多对多关系实际上是通过两个一对多关系实现的，即通过一个中间表，关联两个一对多关系，就形成了多对多关系</p> <h4> <a id="_103" rel="nofollow"></a>一对一</h4> <p>一对一关系是指，一个表的记录对应到另一个表的唯一一个记录。</p> <p>细心的话会发现，既然是一对一关系，那为啥不给<code>students</code>表增加一个<code>mobile</code>列，这样就能合二为一了？</p> <p>如果业务允许，完全可以把两个表合为一个表。但是，有些时候，如果某个学生没有手机号，那么，<code>contacts</code>表就不存在对应的记录。实际上，一对一关系准确地说，是<code>contacts</code>表一对一对应<code>students</code>表。</p> <p>还有一些应用会把一个大表拆成两个一对一的表，目的是把经常读取和不经常读取的字段分开，以获得更高的性能。例如，把一个大的用户表分拆为用户基本信息表<code>user_info</code>和用户详细信息表<code>user_profiles</code>，大部分时候，只需要查询<code>user_info</code>表，并不需要查询<code>user_profiles</code>表，这样就<strong>提高了查询速度</strong>。</p> <p><strong>总结</strong>：关系数据库通过外键可以实现一对多、多对多和一对一的关系。外键既可以通过数据库来约束，也可以不设置约束，仅依靠应用程序的逻辑来保证。</p> <h2> <a id="_115" rel="nofollow"></a>索引</h2> <h3> <a id="_117" rel="nofollow"></a>索引的概念与用法</h3> <p>在关系数据库中，如果有上万甚至上亿条记录，在查找记录的时候，想要获得非常快的速度，就需要使用索引。</p> <p>**索引是关系数据库中对某一列或多个列的值进行预排序的数据结构。**通过使用索引，可以让数据库系统不必扫描整个表，而是直接定位到符合条件的记录，这样就大大加快了查询速度。</p> <p>例如，对于<code>students</code>表：</p> <table> <thead> <tr> <th>id</th> <th>class_id</th> <th>name</th> <th>gender</th> <th>score</th> </tr> </thead> <tbody> <tr> <td>1</td> <td>1</td> <td>小明</td> <td>M</td> <td>90</td> </tr> <tr> <td>2</td> <td>1</td> <td>小红</td> <td>F</td> <td>95</td> </tr> <tr> <td>3</td> <td>1</td> <td>小军</td> <td>M</td> <td>88</td> </tr> </tbody> </table> <p>如果要经常根据<code>score</code>列进行查询，就可以对<code>score</code>列创建索引：</p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">INDEX</span> idx_score<span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <p>使用<code>ADD INDEX idx_score (score)</code>就创建了一个名称为<code>idx_score</code>，使用列<code>score</code>的索引。索引名称是任意的，索引如果有多列，可以在括号里依次写上。</p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">INDEX</span> idx_name_score <span class="token punctuation">(</span>name<span class="token punctuation">,</span> score<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <p>**索引的效率取决于索引列的值是否散列，即该列的值如果越互不相同，那么索引效率越高。**反过来，如果记录的列存在大量相同的值，例如<code>gender</code>列，大约一半的记录值是<code>M</code>，另一半是<code>F</code>，因此，对该列创建索引就没有意义。</p> <p>可以对一张表创建多个索引。<strong>索引的优点是提高了查询效率</strong>，<strong>缺点是在插入、更新和删除记录时，需要同时修改索引，因此，索引越多，插入、更新和删除记录的速度就越慢。</strong></p> <p>对于主键，关系数据库会自动对其创建主键索引。使用主键索引的效率是最高的，因为主键会保证绝对唯一。</p> <h3> <a id="_153" rel="nofollow"></a>唯一索引</h3> <p>在设计关系数据表的时候，看上去唯一的列，例如身份证号、邮箱地址等，因为他们具有业务含义，因此不宜作为主键。</p> <p>但是，这些列根据业务要求，又具有唯一性约束：即不能出现两条记录存储了同一个身份证号。这个时候，就可以给该列添加一个唯一索引。例如，我们假设<code>students</code>表的<code>name</code>不能重复：</p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">UNIQUE</span> <span class="token keyword">INDEX</span> uni_name<span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <p>通过<code>UNIQUE</code>关键字我们就添加了一个唯一索引。</p> <p>也可以只对某一列添加一个唯一约束而不创建唯一索引：</p> <pre><code class="prism language-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> students <span class="token keyword">ADD</span> <span class="token keyword">CONSTRAINT</span> uni_name <span class="token keyword">UNIQUE</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> </code></pre> <p>这种情况下，<code>name</code>列没有索引，但仍然具有唯一性保证。</p> <p>无论是否创建索引，对于用户和应用程序来说，使用关系数据库不会有任何区别。这里的意思是说，**当我们在数据库中查询时，如果有相应的索引可用，数据库系统就会自动使用索引来提高查询效率，如果没有索引，查询也能正常执行，只是速度会变慢。**因此，索引可以在使用数据库的过程中逐步优化。</p> <h3> <a id="Tips_177" rel="nofollow"></a>Tips:</h3> <p>1.通过对数据库表创建索引，可以提高查询速度。但索引越多，插入和更新的速度越慢。</p> <p>2.索引加得不好，查询不会变快，甚至会变慢。</p> <p>3.通过创建唯一索引，可以保证某一列的值具有唯一性。</p> <p>4.数据库索引对于用户和应用程序来说都是透明的。</p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-82659.htm">宠物店卖什么狗粮好（宠物店卖什么狗粮好呢）</a></p>
+                                        <p>下一个：<a href="/news/article-83373.htm">重庆哪里有领养狗狗的地方（重庆哪里可以领养狗狗的地方）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-27-free-node-subscribe-links.htm" title="「2月27日」最高速度18.6M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「2月27日」最高速度18.6M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-69119.htm" title="小奶猫多大第一次驱虫（小猫是先驱虫还是先打猫三联）">小奶猫多大第一次驱虫（小猫是先驱虫还是先打猫三联）</a></li>
+                        <li class="py-2"><a href="/news/article-62884.htm" title="猫咪打三针一共多少（猫咪三针打完需要多久）">猫咪打三针一共多少（猫咪三针打完需要多久）</a></li>
+                        <li class="py-2"><a href="/news/article-75073.htm" title="宠物疫苗可以带上高铁吗现在（宠物疫苗能上地铁吗）">宠物疫苗可以带上高铁吗现在（宠物疫苗能上地铁吗）</a></li>
+                        <li class="py-2"><a href="/news/article-62280.htm" title="vue动态加载静态资源">vue动态加载静态资源</a></li>
+                        <li class="py-2"><a href="/news/article-69768.htm" title="一岁的猫还用打猫三联吗（一岁的猫还打疫苗吗）">一岁的猫还用打猫三联吗（一岁的猫还打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-14-node-share.htm" title="「2月14日」最高速度20.7M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「2月14日」最高速度20.7M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-45572.htm" title="动物疫苗价格查询表最新版（动物疫苗价格查询表最新版图片）">动物疫苗价格查询表最新版（动物疫苗价格查询表最新版图片）</a></li>
+                        <li class="py-2"><a href="/news/article-65910.htm" title="宠物猫疫苗一般多少钱一针（宠物猫疫苗多少钱一针?）">宠物猫疫苗一般多少钱一针（宠物猫疫苗多少钱一针?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-5-node-share.htm" title="「3月5日」最高速度21.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接">「3月5日」最高速度21.8M/S，2025年Clash/Shadowrocket/V2ray/SSR每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">87</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                            <p>
+                                <a href="/">首页</a> | 
+                                <a href="/free-node/">免费节点</a> | 
+                                <a href="/news/">新闻资讯</a> |
+                                <a href="/about-us.htm">关于我们</a> |
+                                <a href="/disclaimer.htm">免责申明</a> |
+                                <a href="/privacy.htm">隐私申明</a> |
+                                <a href="/sitemap.xml">网站地图</a>
+                            </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
