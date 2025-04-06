@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-88371.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>pytorch: 计算ConvTranspose1d输出特征大小</title>
+        <meta name="description" content="问题：如何经过convTransposed1d输出指定大小的特征？ import torch from torch import nn import torch.nn.functional as F " />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-88371.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="pytorch: 计算ConvTranspose1d输出特征大小" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/a42b8143c43ca327fa76cb3f661c78eb.webp" />
+        <meta property="og:release_date" content="2025-04-04T09:10:17" />
+    <meta property="og:updated_time" content="2025-04-04T09:10:17" />
+        <meta property="og:description" content="问题：如何经过convTransposed1d输出指定大小的特征？ import torch from torch import nn import torch.nn.functional as F " />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="pytorch: 计算ConvTranspose1d输出特征大小">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>pytorch: 计算ConvTranspose1d输出特征大小</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-light"> <p><strong>问题：如何经过convTransposed1d输出指定大小的特征？</strong></p> <pre><code class="prism language-python"><span class="token keyword">import</span> torch <span class="token keyword">from</span> torch <span class="token keyword">import</span> nn <span class="token keyword">import</span> torch<span class="token punctuation">.</span>nn<span class="token punctuation">.</span>functional <span class="token keyword">as</span> F   conv1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> conv2 <span class="token operator">=</span> nn<span class="token punctuation">.</span>Conv1d<span class="token punctuation">(</span>in_channels<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> out_channels<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#转置卷积</span> dconv1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>ConvTranspose1d<span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> output_padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>  x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  x1 <span class="token operator">=</span> conv1<span class="token punctuation">(</span>x<span class="token punctuation">)</span> x2 <span class="token operator">=</span> conv2<span class="token punctuation">(</span>x1<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x2<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  x3 <span class="token operator">=</span> dconv1<span class="token punctuation">(</span>x2<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x3<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token triple-quoted-string string">''' torch.Size([16, 1, 8]) torch.Size([16, 4, 8]) #conv2输出特征图大小 torch.Size([16, 1, 16]) #转置卷积输出特征图大小 '''</span>   </code></pre> <p><strong>计算转置卷积输出特征大小公式</strong><br /> 输入：<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        (</p> <p>        N</p> <p>        ,</p> <p>         C</p> <p>          i</p> <p>          n</p> <p>        ,</p> <p>         L</p> <p>          i</p> <p>          n</p> <p>        )</p> <p>       (N, C_{in}, L_{in})</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathit" style="margin-right: 0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit" style="margin-right: 0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: -0.07153em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span><br /> 输出：<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        (</p> <p>        N</p> <p>        ,</p> <p>         C</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>        ,</p> <p>         L</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>        )</p> <p>       (N, C_{out}, L_{out})</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathit" style="margin-right: 0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit" style="margin-right: 0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: -0.07153em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p> <p>计算<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>         L</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>       L_{out}</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>大小：<br /><span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>         L</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>        =</p> <p>        (</p> <p>         L</p> <p>          i</p> <p>          n</p> <p>        −</p> <p>        1</p> <p>        )</p> <p>        ×</p> <p>        s</p> <p>        t</p> <p>        r</p> <p>        i</p> <p>        d</p> <p>        e</p> <p>        −</p> <p>        2</p> <p>        ×</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>        +</p> <p>        d</p> <p>        i</p> <p>        l</p> <p>        a</p> <p>        t</p> <p>        i</p> <p>        o</p> <p>        n</p> <p>        ×</p> <p>        (</p> <p>        k</p> <p>        e</p> <p>        r</p> <p>        n</p> <p>        e</p> <p>        l</p> <p>        s</p> <p>        i</p> <p>        z</p> <p>        e</p> <p>        −</p> <p>        1</p> <p>        )</p> <p>        +</p> <p>        o</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>        +</p> <p>        1</p> <p>       L_{out}=(L_{in}-1)×stride-2×padding+dilation×(kernelsize-1)+outputpadding+1</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit">d</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">a</span><span class="mord mathit">t</span><span class="mord mathit">i</span><span class="mord mathit">o</span><span class="mord mathit">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathit" style="margin-right: 0.03148em;">k</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right: 0.04398em;">z</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathit">o</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></p> <p>dilation默认为1， 上式简写为：<br /><span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>         L</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>        =</p> <p>        (</p> <p>         L</p> <p>          i</p> <p>          n</p> <p>        −</p> <p>        1</p> <p>        )</p> <p>        ×</p> <p>        s</p> <p>        t</p> <p>        r</p> <p>        i</p> <p>        d</p> <p>        e</p> <p>        −</p> <p>        2</p> <p>        ×</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>        +</p> <p>        k</p> <p>        e</p> <p>        r</p> <p>        n</p> <p>        e</p> <p>        l</p> <p>        s</p> <p>        i</p> <p>        z</p> <p>        e</p> <p>        +</p> <p>        o</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>       L_{out}=(L_{in}-1)×stride-2×padding+kernelsize+outputpadding</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit">d</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.72777em; vertical-align: -0.08333em;"></span><span class="mord">2</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.77777em; vertical-align: -0.08333em;"></span><span class="mord mathit" style="margin-right: 0.03148em;">k</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right: 0.04398em;">z</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord mathit">o</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span></span></span></span></span><br /> kernel_size固定，由stride, padding, outputpadding共同决定输出特征大小。</p> <p><strong>问题：输出特定的<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>          L</p> <p>           o</p> <p>           u</p> <p>           t</p> <p>        L_{out}</p> <p>     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span></span></span></span></span>大小</strong><br /> 假如<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>         L</p> <p>          i</p> <p>          n</p> <p>        =</p> <p>        8</p> <p>        ,</p> <p>         L</p> <p>          o</p> <p>          u</p> <p>          t</p> <p>        =</p> <p>        23</p> <p>        ,</p> <p>        k</p> <p>        e</p> <p>        r</p> <p>        n</p> <p>        e</p> <p>        l</p> <p>        s</p> <p>        i</p> <p>        z</p> <p>        e</p> <p>        =</p> <p>        3</p> <p>        ,</p> <p>        o</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        u</p> <p>        t</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>        =</p> <p>        1</p> <p>       L_{in}=8,L_{out}=23,kernelsize=3,outputpadding=1</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.83333em; vertical-align: -0.15em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.311664em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">i</span><span class="mord mathit mtight">n</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.87777em; vertical-align: -0.19444em;"></span><span class="mord">8</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 0.280556em;"><span class="" style="top: -2.55em; margin-left: 0em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">o</span><span class="mord mathit mtight">u</span><span class="mord mathit mtight">t</span></span></span></span></span><span class="vlist-s"></span></span><span class="vlist-r"><span class="vlist" style="height: 0.15em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord">2</span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathit" style="margin-right: 0.03148em;">k</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">n</span><span class="mord mathit">e</span><span class="mord mathit" style="margin-right: 0.01968em;">l</span><span class="mord mathit">s</span><span class="mord mathit">i</span><span class="mord mathit" style="margin-right: 0.04398em;">z</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathit">o</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">u</span><span class="mord mathit">t</span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span>，根据上式可以求得：<span class="katex--inline"><span class="katex"><span class="katex-mathml"></p> <p>        s</p> <p>        t</p> <p>        r</p> <p>        i</p> <p>        d</p> <p>        e</p> <p>        =</p> <p>        3</p> <p>        ,</p> <p>        p</p> <p>        a</p> <p>        d</p> <p>        d</p> <p>        i</p> <p>        n</p> <p>        g</p> <p>        =</p> <p>        1</p> <p>       stride=3,padding=1</p> <p>    </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.69444em; vertical-align: 0em;"></span><span class="mord mathit">s</span><span class="mord mathit">t</span><span class="mord mathit" style="margin-right: 0.02778em;">r</span><span class="mord mathit">i</span><span class="mord mathit">d</span><span class="mord mathit">e</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.88888em; vertical-align: -0.19444em;"></span><span class="mord">3</span><span class="mpunct">,</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord mathit">p</span><span class="mord mathit">a</span><span class="mord mathit">d</span><span class="mord mathit">d</span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mord mathit" style="margin-right: 0.03588em;">g</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.64444em; vertical-align: 0em;"></span><span class="mord">1</span></span></span></span></span></p> <pre><code class="prism language-python"><span class="token comment">#转置卷积</span> dconv1 <span class="token operator">=</span> nn<span class="token punctuation">.</span>ConvTranspose1d<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> kernel_size<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> stride<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">,</span> padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span> output_padding<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>  x <span class="token operator">=</span> torch<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#torch.Size([16, 1, 23])</span>   x3 <span class="token operator">=</span> dconv1<span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token keyword">print</span><span class="token punctuation">(</span>x3<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">#torch.Size([16, 1, 23])</span>  </code></pre> <p>下面两图为演示conv1d，在padding和不padding下的输出特征图大小</p> <p><strong>不带padding</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221225/3e3d77c33a76557265117291ba8de27b.jpg" alt="pytorch: 计算ConvTranspose1d输出特征大小"></p> <p><strong>带padding</strong><br /><img decoding="async" src="http://img.555519.xyz/uploads/20221225/7502fad4680c91ad95e8ae579014f1fe.jpg" alt="pytorch: 计算ConvTranspose1d输出特征大小"></p> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-87666.htm">上海宠物救助站浦东新区（上海宠物狗救助站）</a></p>
+                                        <p>下一个：<a href="/news/article-88372.htm">学宠物美容有前途吗女生多少岁（学宠物美容有前途吗女生多少岁可以学）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-88371.htm" title="pytorch: 计算ConvTranspose1d输出特征大小">pytorch: 计算ConvTranspose1d输出特征大小</a></li>
+                        <li class="py-2"><a href="/news/article-70426.htm" title="给动物注射疫苗为人工被动免疫（人工被动免疫的疫苗）">给动物注射疫苗为人工被动免疫（人工被动免疫的疫苗）</a></li>
+                        <li class="py-2"><a href="/news/article-69766.htm" title="动物疫苗的了解和看法英语作文初中（动物疫苗 英文）">动物疫苗的了解和看法英语作文初中（动物疫苗 英文）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-v2ray-subscribe.htm" title="「3月15日」最高速度20.6M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接">「3月15日」最高速度20.6M/S，2025年Shadowrocket/Clash/SSR/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-87666.htm" title="上海宠物救助站浦东新区（上海宠物狗救助站）">上海宠物救助站浦东新区（上海宠物狗救助站）</a></li>
+                        <li class="py-2"><a href="/news/article-69119.htm" title="小奶猫多大第一次驱虫（小猫是先驱虫还是先打猫三联）">小奶猫多大第一次驱虫（小猫是先驱虫还是先打猫三联）</a></li>
+                        <li class="py-2"><a href="/news/article-71078.htm" title="全链路压测(10)：测试要做的准备工作_在线工具">全链路压测(10)：测试要做的准备工作_在线工具</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-11-clash-node-github.htm" title="「3月11日」最高速度20.1M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接">「3月11日」最高速度20.1M/S，2025年Shadowrocket/SSR/V2ray/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-clash-v2ray-ss-ssr.htm" title="「4月5日」最高速度22.9M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接">「4月5日」最高速度22.9M/S，2025年SSR/Clash/Shadowrocket/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-12-node-share.htm" title="「3月12日」最高速度21.7M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接">「3月12日」最高速度21.7M/S，2025年SSR/V2ray/Shadowrocket/Clash每天更新免费节点订阅链接</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">18</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
