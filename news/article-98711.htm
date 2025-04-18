@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://clashnodegithub.github.io/news/article-98711.htm" />
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>linux 硬盘满了如何处理</title>
+        <meta name="description" content="事件源于在服务器运行一个脚本程序… 好好的脚本突然报错,还以为脚本出现问题了。细看报错原因(具体报错信息已经忘记了)，是没有可用空间。从没遇见过这个情况，怎么办呢？ 一、确定是不是真的是磁盘空间不足 " />
+        <link rel="icon" href="/assets/website/img/clashnodegithub/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="ClashNodeGithub节点订阅站">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://clashnodegithub.github.io/news/article-98711.htm" />
+    <meta property="og:site_name" content="ClashNodeGithub节点订阅站" />
+    <meta property="og:title" content="linux 硬盘满了如何处理" />
+    <meta property="og:image" content="https://clashnodegithub.github.io/uploads/20240611/92986bade0a589969fad129ade3e848c.webp" />
+        <meta property="og:release_date" content="2025-04-18T09:40:44" />
+    <meta property="og:updated_time" content="2025-04-18T09:40:44" />
+        <meta property="og:description" content="事件源于在服务器运行一个脚本程序… 好好的脚本突然报错,还以为脚本出现问题了。细看报错原因(具体报错信息已经忘记了)，是没有可用空间。从没遇见过这个情况，怎么办呢？ 一、确定是不是真的是磁盘空间不足 " />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- ========================= CSS here ========================= -->
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/bootstrap-5.0.0-beta2.min.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/LineIcons.2.0.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/tiny-slider.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/animate.css" />
+    <link rel="stylesheet" href="/assets/website/css/clashnodegithub/main.css" />
+
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="linux 硬盘满了如何处理">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R0F58W82T1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-R0F58W82T1');
+</script>    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+    <!-- ========================= preloader start ========================= -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="spinner">
+                <div class="spinner-container">
+                    <div class="spinner-rotator">
+                        <div class="spinner-left">
+                            <div class="spinner-circle"></div>
+                        </div>
+                        <div class="spinner-right">
+                            <div class="spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader end -->
+    <!-- ========================= header start ========================= -->
+    <header class="header">
+        <div class="navbar-area">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                                                            <a class="navbar-brand" href="/">Clash Node Github</a>
+                                                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
+                                <div class="ms-auto">
+                                    <ul id="nav" class="navbar-nav ms-auto">
+                                                                                <li class="nav-item">
+                                            <a href="/">首页</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/free-nodes/">免费节点</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/paid-subscribe/">推荐机场</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/client.htm">客户端</a>
+                                        </li>
+                                                                                <li class="nav-item">
+                                            <a href="/news/">新闻资讯</a>
+                                        </li>
+                                                                            </ul>
+                                </div>
+                            </div>
+                            <!-- navbar collapse -->
+                        </nav>
+                        <!-- navbar -->
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- container -->
+        </div>
+        <!-- navbar area -->
+    </header>
+    <!-- ========================= header end ========================= -->
+    <!-- ========================= hero-section start ========================= -->
+    <section id="home" class="hero-section">
+        <div class="hero-wrapper" style="height: 250px;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-10">
+                        <div class="hero-content">
+                            <h1>linux 硬盘满了如何处理</h1>
+                            <p>
+                                <a href="/">首页</a> / <a href="/news/">新闻资讯</a> / <span>正文</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= hero-section end ========================= -->
+    <!-- ========================= about-section start ========================= -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="" data-url="">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>事件源于在服务器运行一个脚本程序…</p> <p>好好的脚本突然报错,还以为脚本出现问题了。细看报错原因(具体报错信息已经忘记了)，是没有可用空间。从没遇见过这个情况，怎么办呢？</p> <p>一、确定是不是真的是磁盘空间不足</p> <p>输入命令：df –lh 查看磁盘信息</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/5c4fc8a4606c09f3ebb51d321e13245f.jpg" alt="linux 硬盘满了如何处理"></p> <p>很明显：Filesystem下的挂载点 /dev/xvda1 下的40G容量已经耗尽。</p> <p>既然问题已经确定了，接下来就是处理了。</p> <p>处理方法也很简单，就是删文件。</p> <p>问：删除什么文件？</p> <p>答：删除占用磁盘空间大，但又无用的文件。</p> <p>问：什么是无用的文件？</p> <p>答：如果对系统不熟悉的话，日志可能是你第一的下手目标。</p> <p>二、如何定位最大文件目录</p> <p>输入命令： cd / 进入根目录。</p> <p>输入命令：du -h max-depth=1 寻找当前目录，哪个文件夹占用空间最大</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/a5f112d7b6d8855c72579935c77f1a12.jpg" alt="linux 硬盘满了如何处理"></p> <p>以上两个命令之后，可以看到 /usr 此路径占用较大磁盘空间，占用了21G。眼尖的同学可能看到了最后一项显示24G，它表示当前目录所有文件占用磁盘空间总和容量是24G。</p> <p>如法炮制，几番判断后，定位到tomcat的日志文件。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/7c6acfd28ab698088320f7be08371538.jpg" alt="linux 硬盘满了如何处理"></p> <p>由上图可以判断，17G文件在当前目录(tomcat日志目录)文件中。</p> <p>三、如何定位最大文件</p> <p>输入命令：ls –lhS 将文件以从大到小顺序展现</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/22357c94998ca066cde67719f26899b1.jpg" alt="linux 硬盘满了如何处理"></p> <p>最终定位文件为：catalina.out 这个日志文件。</p> <p>四、确认文件未被占用</p> <p>删除文件谁都会：rm –f catalina.out 但是，最好确认下是否要下载下来让开发人员分析日志。</p> <p>辛苦一阵找到文件，删除了很开心，输入命令：df –lh 发现磁盘空间仍是满的状态。跟图一完全没有区别。难道说是需要重启系统吗？linux会这么不友好么？</p> <p>谷歌一下，发现了这么一段话：</p> <p>在Linux或者Unix系统中，通过rm或者文件管理器删除文件将会从文件系统的目录结构上解除链接(unlink).然而如果文件是被打开的（有一个进程正在使用），那么进程将仍然可以读取该文件，磁盘空间也一直被占用。</p> <p>输入命令：/usr/sbin/lsof|grep deleted 确认删除文件是否被占用</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/4f3dd48105bb145ab6083bf22b80301f.jpg" alt="linux 硬盘满了如何处理"></p> <p>确实被占用。根据第二列提供的pid，输入命令：kill -9 13117 杀掉进程。</p> <p>再次输入命令：df –lh</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220609/62caaab8e60257ae00be35da3857c0ea.jpg" alt="linux 硬盘满了如何处理"></p> <p>如图，磁盘空间被释放了。问题顺利处理了。</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-98006.htm">python中repr()函数用法详解</a></p>
+                                        <p>下一个：<a href="/news/article-98712.htm">动物***去哪里***好（动物打疫苗去哪里打）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-6-clash-windows.htm" title="「3月6日」最高速度18.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接">「3月6日」最高速度18.9M/S，2025年Shadowrocket/SSR/Clash/V2ray每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-75765.htm" title="学宠物医生上什么专科学校好（学宠物医生有前景吗?）">学宠物医生上什么专科学校好（学宠物医生有前景吗?）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-10-free-high-speed-nodes.htm" title="「3月10日」最高速度18M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接">「3月10日」最高速度18M/S，2025年Clash/V2ray/SSR/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-92016.htm" title="动物接种疫苗多少钱一针河南南阳 动物接种疫苗多少钱一针河南南阳">动物接种疫苗多少钱一针河南南阳 动物接种疫苗多少钱一针河南南阳</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-20-clash-windows.htm" title="「3月20日」最高速度22M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接">「3月20日」最高速度22M/S，2025年Shadowrocket/V2ray/SSR/Clash每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-78495.htm" title="nginx.conf配置文件结构小结_nginx">nginx.conf配置文件结构小结_nginx</a></li>
+                        <li class="py-2"><a href="/news/article-68455.htm" title="手指被猫抓出血了,要打疫苗吗?（手指被猫抓出血了要打疫苗吗）">手指被猫抓出血了,要打疫苗吗?（手指被猫抓出血了要打疫苗吗）</a></li>
+                        <li class="py-2"><a href="/news/article-67208.htm" title="动物疫苗接种间隔多长时间有效 动物疫苗接种间隔多长时间有效果">动物疫苗接种间隔多长时间有效 动物疫苗接种间隔多长时间有效果</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-high-speed-nodes.htm" title="「3月26日」最高速度22.5M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接">「3月26日」最高速度22.5M/S，2025年Clash/SSR/V2ray/Shadowrocket每天更新免费节点订阅链接</a></li>
+                        <li class="py-2"><a href="/news/article-89840.htm" title="无货源怎么开拼多多店（无货源怎么开拼多多店铺）">无货源怎么开拼多多店（无货源怎么开拼多多店铺）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">54</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ========================= about-section end ========================= -->
+        <!-- ========================= footer start ========================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/free-nodes/">免费节点</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/news/">新闻资讯</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    ClashNodeGithub节点订阅站 版权所有 Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========================= footer end ========================= -->
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+    <!-- ========================= JS here ========================= -->
+    <script src="/assets/website/js/frontend/clashnodegithub/jquery-3.5.1.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/bootstrap-5.0.0-beta2.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/tiny-slider.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/wow.min.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/polyfill.js"></script>
+    <script src="/assets/website/js/frontend/clashnodegithub/main.js"></script>
+    <script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script><script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
